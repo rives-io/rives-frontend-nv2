@@ -497,11 +497,6 @@ export async function cartridge(
       : toHex(partOutput.rawData);
     let payloadHex = rawData.substring(2);
     if (payloadHex.length / 2 > MAX_SPLITTABLE_OUTPUT_SIZE) {
-      console.log(
-        "remaining parts",
-        part,
-        payloadHex.substring(payloadHex.length - 2, payloadHex.length),
-      );
       part++;
       payloadHex = payloadHex.substring(0, payloadHex.length - 2);
       hasMoreParts = true;

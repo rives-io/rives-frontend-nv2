@@ -189,10 +189,8 @@ function RivemuEditor() {
   const [tape, setTape] = useState<Uint8Array>();
 
   // Control
-  const [ruleList, setRuleList] = useState<readonly RuleInfo[]>([]);
-  const [cartridgeList, setCartridgeList] = useState<readonly CartridgeInfo[]>(
-    [],
-  ); //([{name:"test",id:"test",info:{} as unknown,user_address:"",created_at:0,authors:[]}]);
+  const ruleListRef = useRef<readonly RuleInfo[]>([]);
+  const cartridgeListRef = useRef<readonly CartridgeInfo[]>([]); //([{name:"test",id:"test",info:{} as unknown,user_address:"",created_at:0,authors:[]}]);
   const [selectedCartridge, setSelectedCartridge] =
     useState<CartridgeInfo | null>();
   const [entropy, setEntropy] = useState<string>("entropy");
@@ -268,11 +266,13 @@ function RivemuEditor() {
         generateEntropy(user.wallet!.address.toLowerCase(), rule?.id || ""),
       );
     }
-  }, [user]);
+  }, [user, ready, rule?.id]);
 
   useEffect(() => {
-    if (cartridgesComboOpen && cartridgeList.length == 0) {
-      loadCartridgeList();
+    if (cartridgesComboOpen && cartridgeListRef.current.length == 0) {
+      getCartridges().then((data) => {
+        cartridgeListRef.current = data;
+      });
     }
   }, [cartridgesComboOpen]);
 
@@ -281,11 +281,13 @@ function RivemuEditor() {
       storedCartridge &&
       selectedCartridge &&
       rulesComboOpen &&
-      ruleList.length == 0
+      ruleListRef.current.length == 0
     ) {
-      loadRuleList(selectedCartridge.id);
+      getRules(selectedCartridge.id).then((data) => {
+        ruleListRef.current = data;
+      });
     }
-  }, [rulesComboOpen]);
+  }, [rulesComboOpen, selectedCartridge, storedCartridge]);
 
   useEffect(() => {
     setRuleName(rule?.name);
@@ -348,22 +350,8 @@ function RivemuEditor() {
     });
   }, [ruleInCard, selectedCartridge, storedCartridge, ruleTapes]);
 
-  const loadCartridgeList = () => {
-    if (cartridgeList && cartridgeList.length > 0) return;
-    getCartridges().then((data) => {
-      setCartridgeList(data);
-    });
-  };
-
-  const loadRuleList = (cartridgeId: string) => {
-    if (ruleList && ruleList.length > 0) return;
-    getRules(cartridgeId).then((data) => {
-      setRuleList(data);
-    });
-  };
-
   const selectCartridge = (selCart: CartridgeInfo | null) => {
-    setRuleList([]);
+    ruleListRef.current = [];
     setRule(undefined);
     setTape(new Uint8Array([]));
     setOutcard(undefined);
@@ -406,7 +394,7 @@ function RivemuEditor() {
     const reader = new FileReader();
     reader.onload = async (readerEvent) => {
       rivemuRef.current?.stop();
-      setRuleList([]);
+      ruleListRef.current = [];
       setRule(undefined);
       setTape(new Uint8Array([]));
       setOutcard(undefined);
@@ -833,7 +821,7 @@ function RivemuEditor() {
         client: walletClient,
         applicationAddress: envClient.DAPP_ADDR as `0x${string}`,
       });
-      setRuleList([]);
+      ruleListRef.current = [];
       setRule(undefined);
     } catch (error) {
       console.log(error);
@@ -1149,7 +1137,7 @@ function RivemuEditor() {
             <Autocomplete
               value={selectedCartridge || null}
               className="w-full"
-              options={cartridgeList}
+              options={cartridgeListRef.current}
               onChange={(_event: unknown, newValue: CartridgeInfo | null) =>
                 selectCartridge(newValue)
               }
@@ -1168,7 +1156,7 @@ function RivemuEditor() {
             <Autocomplete
               value={rule || null}
               className="w-full"
-              options={ruleList}
+              options={ruleListRef.current}
               open={rulesComboOpen}
               onChange={(_event: unknown, newValue: RuleInfo | null) =>
                 selectRule(newValue)

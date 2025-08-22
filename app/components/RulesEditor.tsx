@@ -270,7 +270,7 @@ function RulesEditor({
         generateEntropy(user.wallet!.address.toLowerCase(), rule?.id || ""),
       );
     }
-  }, [user]);
+  }, [user, ready, rule?.id]);
 
   useEffect(() => {
     if (!rule) return;
@@ -331,13 +331,13 @@ function RulesEditor({
     }).then((out) => {
       setFinalIncard(out);
     });
-  }, [ruleInCard, ruleTapes]);
+  }, [ruleInCard, ruleTapes, cartridge_id]);
 
   useEffect(() => {
     if (testAutoplay) {
       replay();
     }
-  }, [testAutoplay]);
+  }, [testAutoplay, replay]);
 
   useEffect(() => {
     setTested(false);

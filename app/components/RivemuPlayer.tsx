@@ -211,9 +211,52 @@ function RivemuPlayer({
           );
       }
     }
-  }, [user]);
+  }, [user, ready, rule_id, isTape]);
 
   useEffect(() => {
+    const loadRule = (ruleId: string) => {
+      setLoadingMessage("Loading rule");
+      getRule(ruleId).then((out: RuleInfo) => {
+        if (!out) {
+          setErrorMessage("Rule not found");
+          return;
+        }
+        setRule(out);
+        setLoadingMessage("Loading cartridge");
+        getCartridgeData(out.cartridge_id).then((data) => {
+          if (!data) {
+            setErrorMessage("Cartridge not found");
+            return;
+          }
+          setCartridgeData(data);
+          setLoadingMessage(undefined);
+        });
+      });
+    };
+
+    const loadTape = (tapeId: string, loadRuleFromTape: boolean) => {
+      setLoadingMessage("Loading tape");
+      getTapePayload(tapeId).then((out: VerifyPayload) => {
+        if (!out) {
+          setErrorMessage("Tape not found");
+          return;
+        }
+        setTape(out);
+
+        setEntropy(
+          generateEntropy(out._msgSender, ruleIdFromBytes(out.rule_id)),
+        );
+        if (loadRuleFromTape) {
+          loadRule(ruleIdFromBytes(out.rule_id));
+        } else {
+          setLoadingMessage(undefined);
+        }
+
+        setUsedTapes(out.tapes);
+        setTapeInCard(out.in_card);
+      });
+    };
+
     if (rule_id) {
       loadRule(rule_id);
     }
@@ -228,7 +271,7 @@ function RivemuPlayer({
         }
       }
     });
-  }, []);
+  }, [tape_id, rule_id]);
 
   useEffect(() => {
     if (!rule) {
@@ -252,48 +295,7 @@ function RivemuPlayer({
     }).then((out) => {
       setInCard(out);
     });
-  }, [rule, tapeInCard, usedTapes]);
-
-  const loadRule = (ruleId: string) => {
-    setLoadingMessage("Loading rule");
-    getRule(ruleId).then((out: RuleInfo) => {
-      if (!out) {
-        setErrorMessage("Rule not found");
-        return;
-      }
-      setRule(out);
-      setLoadingMessage("Loading cartridge");
-      getCartridgeData(out.cartridge_id).then((data) => {
-        if (!data) {
-          setErrorMessage("Cartridge not found");
-          return;
-        }
-        setCartridgeData(data);
-        setLoadingMessage(undefined);
-      });
-    });
-  };
-
-  const loadTape = (tapeId: string, loadRuleFromTape: boolean) => {
-    setLoadingMessage("Loading tape");
-    getTapePayload(tapeId).then((out: VerifyPayload) => {
-      if (!out) {
-        setErrorMessage("Tape not found");
-        return;
-      }
-      setTape(out);
-
-      setEntropy(generateEntropy(out._msgSender, ruleIdFromBytes(out.rule_id)));
-      if (loadRuleFromTape) {
-        loadRule(ruleIdFromBytes(out.rule_id));
-      } else {
-        setLoadingMessage(undefined);
-      }
-
-      setUsedTapes(out.tapes);
-      setTapeInCard(out.in_card);
-    });
-  };
+  }, [rule, tapeInCard, usedTapes, isTape]);
 
   // const cstatus = rule ? getContestStatus(rule) : ContestStatus.INVALID;
 

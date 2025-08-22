@@ -99,7 +99,6 @@ export async function genericGetOutputs(
     applicationAddress: options.applicationAddress,
     cartesiNodeUrl: options.cartesiNodeUrl,
   });
-
   for (const outInd of indexerOutput.data) {
     const ind =
       outInd.type == "input" ? outInd.input_index : outInd.output_index;

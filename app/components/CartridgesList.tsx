@@ -1,6 +1,6 @@
 "use client";
 
-import { cache, useEffect, useState } from "react";
+import { cache, useEffect, useState, useCallback } from "react";
 import { cartridges as cartridgerequest } from "../backend-libs/core/lib";
 import { envClient } from "../utils/clientEnv";
 import CartridgeCard from "./CartridgeCard";
@@ -46,53 +46,63 @@ function CartridgesList() {
     });
   const [userMap, setUserMap] = useState<Record<string, User>>({});
 
-  useEffect(() => {
-    const getFirstPage = async () => {
-      await nextPage();
-    };
+  const nextPage = useCallback(
+    async (
+      reqOptions: CartridgesRequest,
+      uMap: Record<string, User>,
+      curCartridges: Array<CartridgeInfo> | null,
+    ) => {
+      if (reqOptions.fetching || reqOptions.atEnd) return;
 
-    getFirstPage();
-  }, []);
-
-  async function nextPage() {
-    if (cartridgesRequestOptions.fetching || cartridgesRequestOptions.atEnd)
-      return;
-
-    setCartridgesRequestOptions({
-      ...cartridgesRequestOptions,
-      fetching: true,
-    });
-    const newCartridges: Array<CartridgeInfo> = await getCartridges(
-      cartridgesRequestOptions,
-    );
-
-    // no more cartridges to get
-    if (newCartridges.length == 0) {
       setCartridgesRequestOptions({
-        ...cartridgesRequestOptions,
-        atEnd: true,
-        fetching: false,
+        ...reqOptions,
+        fetching: true,
       });
-      return;
-    }
+      const newCartridges: Array<CartridgeInfo> =
+        await getCartridges(reqOptions);
 
-    const newUserMap: Record<string, User> = await getUsersFromCartridges(
-      newCartridges,
-      userMap,
+      // no more cartridges to get
+      if (newCartridges.length == 0) {
+        setCartridgesRequestOptions({
+          ...reqOptions,
+          atEnd: true,
+          fetching: false,
+        });
+        return;
+      }
+
+      const newUserMap: Record<string, User> = await getUsersFromCartridges(
+        newCartridges,
+        uMap,
+      );
+      if (Object.keys(newUserMap).length > 0)
+        setUserMap({ ...uMap, ...newUserMap });
+
+      if (curCartridges) setCartridges([...curCartridges, ...newCartridges]);
+      else setCartridges(newCartridges);
+
+      setCartridgesRequestOptions({
+        ...reqOptions,
+        currentPage: reqOptions.currentPage + 1,
+        fetching: false,
+        atEnd: newCartridges.length < reqOptions.pageSize,
+      });
+    },
+    [],
+  );
+
+  useEffect(() => {
+    nextPage(
+      {
+        currentPage: 1,
+        pageSize: 12,
+        atEnd: false,
+        fetching: false,
+      },
+      {},
+      null,
     );
-    if (Object.keys(newUserMap).length > 0)
-      setUserMap({ ...userMap, ...newUserMap });
-
-    if (cartridges) setCartridges([...cartridges, ...newCartridges]);
-    else setCartridges(newCartridges);
-
-    setCartridgesRequestOptions({
-      ...cartridgesRequestOptions,
-      currentPage: cartridgesRequestOptions.currentPage + 1,
-      fetching: false,
-      atEnd: newCartridges.length < cartridgesRequestOptions.pageSize,
-    });
-  }
+  }, [nextPage]);
 
   if (cartridgesRequestOptions.fetching || !cartridges) {
     return (

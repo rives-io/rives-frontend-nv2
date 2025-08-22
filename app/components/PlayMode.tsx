@@ -78,7 +78,7 @@ function PlayMode({ rulesInfo }: { rulesInfo: RuleInfo[] }) {
 
     getRulesNTapes().then(setNTapes);
     getContestCreatorsUser().then(setUserMap);
-  }, []);
+  }, [rulesInfo]);
 
   function handle_play_click() {
     if (rulesInfo.length == 1) {

@@ -36,7 +36,7 @@ function Navbar() {
     verifyChain(currWallet).catch((error) => {
       console.log((error as Error).message);
     });
-  }, [wallets]);
+  }, [wallets, ready, user]);
 
   return (
     <header className="header">

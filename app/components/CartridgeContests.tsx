@@ -19,29 +19,30 @@ export default function CartridgeContests({
 
   const [contestsLoading, setContestsLoading] = useState(false);
 
-  const contestsByCartridge = async () => {
-    setContestsLoading(true);
-
-    const contests = (
-      await rules(
-        {
-          cartridge_id: cartridge.last_version || cartridgeId,
-          has_start: true,
-          has_end: true,
-        },
-        {
-          cartesiNodeUrl: envClient.CARTESI_NODE_URL,
-          decode: true,
-          applicationAddress: envClient.DAPP_ADDR as `0x${string}`,
-        },
-      )
-    ).data;
-
-    setCartridgeContests(contests);
-    setContestsLoading(false);
-  };
-
   useEffect(() => {
+    console.log("CartridgeContests", cartridge, cartridgeId);
+    const contestsByCartridge = async () => {
+      setContestsLoading(true);
+
+      const contests = (
+        await rules(
+          {
+            cartridge_id: cartridge.last_version || cartridgeId,
+            has_start: true,
+            has_end: true,
+          },
+          {
+            cartesiNodeUrl: envClient.CARTESI_NODE_URL,
+            decode: true,
+            applicationAddress: envClient.DAPP_ADDR as `0x${string}`,
+          },
+        )
+      ).data;
+
+      setCartridgeContests(contests);
+      setContestsLoading(false);
+    };
+
     contestsByCartridge();
   }, []);
 

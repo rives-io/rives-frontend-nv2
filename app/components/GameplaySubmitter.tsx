@@ -135,9 +135,39 @@ function GameplaySubmitter() {
     } else {
       setErrorFeedback(undefined);
     }
-  }, [user]);
+  }, [user, ready, player, wallets]);
 
   useEffect(() => {
+    async function prepareModal() {
+      if (ready && !user) {
+        return;
+      }
+
+      if (!gameplay) {
+        return;
+      }
+      await prepareSubmission();
+      setModalState({ isOpen: true, state: MODAL_STATE.SUBMIT });
+    }
+    async function prepareSubmission() {
+      try {
+        const gifParameters = getGifParameters();
+        setImg(gifParameters.frames[0].split(",")[1]);
+        if (gifParameters) {
+          const gif = await generateGif(
+            gifParameters.frames,
+            gifParameters.width,
+            gifParameters.height,
+          );
+          setGifImg(gif);
+        }
+      } catch (error) {
+        console.log("Error getting gif parameters", error);
+      }
+
+      //setModalState({isOpen: true, state: MODAL_STATE.SUBMIT});
+    }
+
     if (!gameplay) {
       setModalState({ isOpen: false, state: MODAL_STATE.NOT_PREPARED });
       return;
@@ -145,36 +175,6 @@ function GameplaySubmitter() {
     prepareModal();
     //prepareSubmission();
   }, [gameplay]);
-
-  async function prepareModal() {
-    if (ready && !user) {
-      return;
-    }
-
-    if (!gameplay) {
-      return;
-    }
-    await prepareSubmission();
-    setModalState({ isOpen: true, state: MODAL_STATE.SUBMIT });
-  }
-  async function prepareSubmission() {
-    try {
-      const gifParameters = getGifParameters();
-      setImg(gifParameters.frames[0].split(",")[1]);
-      if (gifParameters) {
-        const gif = await generateGif(
-          gifParameters.frames,
-          gifParameters.width,
-          gifParameters.height,
-        );
-        setGifImg(gif);
-      }
-    } catch (error) {
-      console.log("Error getting gif parameters", error);
-    }
-
-    //setModalState({isOpen: true, state: MODAL_STATE.SUBMIT});
-  }
 
   async function submitLog() {
     if (!gameplay) {

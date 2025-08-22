@@ -173,11 +173,16 @@ export default async function Home() {
         <div className="homepageContainer">
           <h1 className={`text-4xl pixelated-font mb-4`}>Latest Tapes</h1>
           <div className="flex flex-wrap gap-4 w-fit">
-            {tapes.map((tape: VerificationOutput, index: number) => {
+            {tapes.map((tape: VerifyPayload, index: number) => {
               return (
                 <TapeCard
                   key={index}
-                  tapeInput={JSON.stringify(tape)}
+                  tapeInput={JSON.stringify(tape, (key, value) => {
+                    if (typeof value === "bigint") {
+                      return value.toString();
+                    }
+                    return value;
+                  })}
                   creator={
                     tape._msgSender
                       ? userMap[tape._msgSender.toLowerCase()] || null

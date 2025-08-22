@@ -89,7 +89,7 @@ export default function ContestCard({
     };
 
     checkWinner();
-  }, []);
+  }, [contest, status]);
 
   useEffect(() => {
     tapes(

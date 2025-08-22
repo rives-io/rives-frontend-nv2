@@ -46,7 +46,7 @@ export default function CartridgeCard({
         }
       });
     }
-  }, [cartridge.user_address]);
+  }, [creator, cartridge]);
 
   function handleClick(e: React.MouseEvent<HTMLElement>) {
     e.preventDefault();
