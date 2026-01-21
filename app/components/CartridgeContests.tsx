@@ -20,7 +20,6 @@ export default function CartridgeContests({
   const [contestsLoading, setContestsLoading] = useState(false);
 
   useEffect(() => {
-    console.log("CartridgeContests", cartridge, cartridgeId);
     const contestsByCartridge = async () => {
       setContestsLoading(true);
 

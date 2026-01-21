@@ -102,6 +102,16 @@ export async function getL2Client(nodeAddress: string) {
   });
 }
 
+export async function getAppAddress(appName: string, nodeAddress: string) {
+  if (!nodeAddress) return null;
+  const client = await getL2Client(nodeAddress + "/rpc");
+  if (!client) return null;
+  const reportResponse = await client.getApplication({
+    application: appName,
+  });
+  return reportResponse.applicationAddress;
+}
+
 export type AsyncReturnType<T extends (..._args: any) => Promise<any>> =
   Awaited<ReturnType<T>>;
 export type BaseLayerPublicClient = AsyncReturnType<typeof getClient>;
@@ -262,10 +272,13 @@ export class IOData<T extends object> {
         for (const key of this._model.params) {
           paramList.push(inputData[key]);
         }
-        payload = encodeAbiParameters(
-          parseAbiParameters(this._model.abiTypes.join(",")),
-          paramList,
-        );
+        payload = "0x";
+        if (this._model.abiTypes.length > 0) {
+          payload = encodeAbiParameters(
+            parseAbiParameters(this._model.abiTypes.join(",")),
+            paramList,
+          );
+        }
         if (selectorInfo) {
           payload = selectorInfo + payload.replace("0x", "");
         }
@@ -701,6 +714,11 @@ export function decodeToConventionalTypes(
     case "tuple":
     case "json": {
       return JSON.parse(isHex(data) ? hexToString(data) : bytesToString(data));
+    }
+    default: try {
+        return JSON.parse(isHex(data) ? hexToString(data) : bytesToString(data));
+    } catch (e) {
+        return data;
     }
   }
 }

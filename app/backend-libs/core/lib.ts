@@ -38,8 +38,9 @@ import {
   type DecodedIndexerOutput,
 } from "../cartesapp/lib";
 
-import * as indexerIfaces from "../indexer/ifaces.d";
+import * as indexerIfaces from "../indexer/ifaces.d"
 import * as ifaces from "./ifaces.d";
+
 
 /**
  * Configs
@@ -59,17 +60,15 @@ const MAX_SPLITTABLE_OUTPUT_SIZE = 4194247;
  */
 
 export async function insertCartridge(
-  inputData: ifaces.InsertCartridgePayload,
-  options: MutationOptions,
+    inputData: ifaces.InsertCartridgePayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: InsertCartridgePayload = new InsertCartridgePayload(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.InsertCartridgePayload>(
     options,
-    "0x5eab7461",
-    data,
+    '0x5eab7461',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -88,19 +87,15 @@ export async function insertCartridge(
 }
 
 export async function setUnlockCartridge(
-  inputData: ifaces.SetUnlockedCartridgePayload,
-  options: MutationOptions,
+    inputData: ifaces.SetUnlockedCartridgePayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
-  const data: SetUnlockedCartridgePayload = new SetUnlockedCartridgePayload(
-    inputData,
-  );
-  if (options?.decode) {
-    options.sync = true;
-  }
+  const data: SetUnlockedCartridgePayload = new SetUnlockedCartridgePayload(inputData);
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.SetUnlockedCartridgePayload>(
     options,
-    "0xdbc5715b",
-    data,
+    '0xdbc5715b',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -119,17 +114,15 @@ export async function setUnlockCartridge(
 }
 
 export async function insertAndUnlockCartridge(
-  inputData: ifaces.InsertCartridgePayload,
-  options: MutationOptions,
+    inputData: ifaces.InsertCartridgePayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: InsertCartridgePayload = new InsertCartridgePayload(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.InsertCartridgePayload>(
     options,
-    "0xe05d2b0b",
-    data,
+    '0xe05d2b0b',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -148,17 +141,15 @@ export async function insertAndUnlockCartridge(
 }
 
 export async function removeCartridge(
-  inputData: ifaces.RemoveCartridgePayload,
-  options: MutationOptions,
+    inputData: ifaces.RemoveCartridgePayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: RemoveCartridgePayload = new RemoveCartridgePayload(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.RemoveCartridgePayload>(
     options,
-    "0x436046ac",
-    data,
+    '0x436046ac',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -177,19 +168,15 @@ export async function removeCartridge(
 }
 
 export async function transferCartridge(
-  inputData: ifaces.TransferCartridgePayload,
-  options: MutationOptions,
+    inputData: ifaces.TransferCartridgePayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
-  const data: TransferCartridgePayload = new TransferCartridgePayload(
-    inputData,
-  );
-  if (options?.decode) {
-    options.sync = true;
-  }
+  const data: TransferCartridgePayload = new TransferCartridgePayload(inputData);
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.TransferCartridgePayload>(
     options,
-    "0x0f38d9d7",
-    data,
+    '0x0f38d9d7',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -208,17 +195,15 @@ export async function transferCartridge(
 }
 
 export async function createRule(
-  inputData: ifaces.RuleData,
-  options: MutationOptions,
+    inputData: ifaces.RuleData,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: RuleData = new RuleData(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.RuleData>(
     options,
-    "0xf65ad264",
-    data,
+    '0xf65ad264',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -237,17 +222,15 @@ export async function createRule(
 }
 
 export async function deactivateRule(
-  inputData: ifaces.DeactivateRulePayload,
-  options: MutationOptions,
+    inputData: ifaces.DeactivateRulePayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: DeactivateRulePayload = new DeactivateRulePayload(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.DeactivateRulePayload>(
     options,
-    "0x7db38ba8",
-    data,
+    '0x7db38ba8',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -266,17 +249,15 @@ export async function deactivateRule(
 }
 
 export async function verify(
-  inputData: ifaces.VerifyPayload,
-  options: MutationOptions,
+    inputData: ifaces.VerifyPayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: VerifyPayload = new VerifyPayload(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.VerifyPayload>(
     options,
-    "0xdb690895",
-    data,
+    '0xdb690895',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -295,17 +276,15 @@ export async function verify(
 }
 
 export async function awardWinners(
-  inputData: ifaces.AwardWinnerTapesPayload,
-  options: MutationOptions,
+    inputData: ifaces.AwardWinnerTapesPayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: AwardWinnerTapesPayload = new AwardWinnerTapesPayload(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.AwardWinnerTapesPayload>(
     options,
-    "0x9648e72e",
-    data,
+    '0x9648e72e',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -324,17 +303,15 @@ export async function awardWinners(
 }
 
 export async function cleanTapes(
-  inputData: ifaces.CleanTapesPayload,
-  options: MutationOptions,
+    inputData: ifaces.CleanTapesPayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: CleanTapesPayload = new CleanTapesPayload(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.CleanTapesPayload>(
     options,
-    "0x9ab37ddf",
-    data,
+    '0x9ab37ddf',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -353,17 +330,15 @@ export async function cleanTapes(
 }
 
 export async function setOperatorAddress(
-  inputData: ifaces.SetOperatorPayload,
-  options: MutationOptions,
+    inputData: ifaces.SetOperatorPayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: SetOperatorPayload = new SetOperatorPayload(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.SetOperatorPayload>(
     options,
-    "0xe1e9bc95",
-    data,
+    '0xe1e9bc95',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -382,17 +357,15 @@ export async function setOperatorAddress(
 }
 
 export async function setCartridgeModerationLock(
-  inputData: ifaces.SetLock,
-  options: MutationOptions,
+    inputData: ifaces.SetLock,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: SetLock = new SetLock(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.SetLock>(
     options,
-    "0x8328ca15",
-    data,
+    '0x8328ca15',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -411,17 +384,15 @@ export async function setCartridgeModerationLock(
 }
 
 export async function setMaxLockedCartridges(
-  inputData: ifaces.SetMaxLockedCartridges,
-  options: MutationOptions,
+    inputData: ifaces.SetMaxLockedCartridges,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: SetMaxLockedCartridges = new SetMaxLockedCartridges(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.SetMaxLockedCartridges>(
     options,
-    "0x6c265c4c",
-    data,
+    '0x6c265c4c',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -440,17 +411,15 @@ export async function setMaxLockedCartridges(
 }
 
 export async function updateRivos(
-  inputData: ifaces.UpdateRivosPayload,
-  options: MutationOptions,
+    inputData: ifaces.UpdateRivosPayload,
+    options:MutationOptions
 ): Promise<InputAdded[] | AdvanceResult[] | unknown[]> {
   const data: UpdateRivosPayload = new UpdateRivosPayload(inputData);
-  if (options?.decode) {
-    options.sync = true;
-  }
+  if (options?.decode) { options.sync = true; }
   const result = await genericAdvanceInput<ifaces.UpdateRivosPayload>(
     options,
-    "0x062965bb",
-    data,
+    '0x062965bb',
+    data
   );
   if (options?.sync) {
     const advanceResults = await listAdvanceResults(
@@ -468,249 +437,249 @@ export async function updateRivos(
   return result;
 }
 
+
 /*
  * Queries/Inspects
  */
 
 export async function cartridge(
-  inputData: ifaces.CartridgePayloadSplittable,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_cartridge";
-  let part: number = 0;
-  let hasMoreParts: boolean = false;
+    inputData: ifaces.CartridgePayloadSplittable,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_cartridge';
+  let part:number = 0;
+  let hasMoreParts:boolean = false;
   const output: InspectReport = { rawData: "0x" };
   do {
     hasMoreParts = false;
-    let inputDataSplittable = Object.assign({ part }, inputData);
-    const data: CartridgePayloadSplittable = new CartridgePayloadSplittable(
-      inputDataSplittable,
-    );
-    const partOutput: InspectReport =
-      await genericInspect<ifaces.CartridgePayloadSplittable>(
-        data,
-        selectorInfo,
-        options,
-      );
-    const rawData = isHex(partOutput.rawData)
-      ? partOutput.rawData
-      : toHex(partOutput.rawData);
+    let inputDataSplittable = Object.assign({part},inputData);
+    const data: CartridgePayloadSplittable = new CartridgePayloadSplittable(inputDataSplittable);
+    const partOutput: InspectReport = await genericInspect<ifaces.CartridgePayloadSplittable>(data,selectorInfo,options);
+    const rawData = isHex(partOutput.rawData) ? partOutput.rawData : toHex(partOutput.rawData);
     let payloadHex = rawData.substring(2);
-    if (payloadHex.length / 2 > MAX_SPLITTABLE_OUTPUT_SIZE) {
+    if (payloadHex.length/2 > MAX_SPLITTABLE_OUTPUT_SIZE) {
       part++;
-      payloadHex = payloadHex.substring(0, payloadHex.length - 2);
-      hasMoreParts = true;
-    }
-    output.rawData += payloadHex;
-  } while (hasMoreParts);
+        payloadHex = payloadHex.substring(0, payloadHex.length - 2);
+          hasMoreParts = true;
+      }
+      output.rawData += payloadHex;
+  } while (hasMoreParts)
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function cartridgeInfo(
-  inputData: ifaces.CartridgePayload,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_cartridgeInfo";
+    inputData: ifaces.CartridgePayload,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_cartridgeInfo';
   const data: CartridgePayload = new CartridgePayload(inputData);
-  const output: InspectReport = await genericInspect<ifaces.CartridgePayload>(
-    data,
-    selectorInfo,
-    options,
-  );
+  const output: InspectReport =
+    await genericInspect<ifaces.CartridgePayload>(
+      data,
+      selectorInfo,
+      options
+    );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function cartridges(
-  inputData: ifaces.CartridgesPayload,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_cartridges";
+    inputData: ifaces.CartridgesPayload,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_cartridges';
   const data: CartridgesPayload = new CartridgesPayload(inputData);
-  const output: InspectReport = await genericInspect<ifaces.CartridgesPayload>(
-    data,
-    selectorInfo,
-    options,
-  );
+  const output: InspectReport =
+    await genericInspect<ifaces.CartridgesPayload>(
+      data,
+      selectorInfo,
+      options
+    );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function cartridgeTags(
-  inputData: ifaces.GetCartridgeTagsPayload,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_cartridgeTags";
+    inputData: ifaces.GetCartridgeTagsPayload,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_cartridgeTags';
   const data: GetCartridgeTagsPayload = new GetCartridgeTagsPayload(inputData);
   const output: InspectReport =
     await genericInspect<ifaces.GetCartridgeTagsPayload>(
       data,
       selectorInfo,
-      options,
+      options
     );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function cartridgeAuthors(
-  inputData: ifaces.GetCartridgeAuthorsPayload,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_cartridgeAuthors";
-  const data: GetCartridgeAuthorsPayload = new GetCartridgeAuthorsPayload(
-    inputData,
-  );
+    inputData: ifaces.GetCartridgeAuthorsPayload,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_cartridgeAuthors';
+  const data: GetCartridgeAuthorsPayload = new GetCartridgeAuthorsPayload(inputData);
   const output: InspectReport =
     await genericInspect<ifaces.GetCartridgeAuthorsPayload>(
       data,
       selectorInfo,
-      options,
+      options
     );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function rules(
-  inputData: ifaces.GetRulesPayload,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_rules";
+    inputData: ifaces.GetRulesPayload,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_rules';
   const data: GetRulesPayload = new GetRulesPayload(inputData);
-  const output: InspectReport = await genericInspect<ifaces.GetRulesPayload>(
-    data,
-    selectorInfo,
-    options,
-  );
+  const output: InspectReport =
+    await genericInspect<ifaces.GetRulesPayload>(
+      data,
+      selectorInfo,
+      options
+    );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function ruleTags(
-  inputData: ifaces.GetRuleTagsPayload,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_ruleTags";
+    inputData: ifaces.GetRuleTagsPayload,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_ruleTags';
   const data: GetRuleTagsPayload = new GetRuleTagsPayload(inputData);
-  const output: InspectReport = await genericInspect<ifaces.GetRuleTagsPayload>(
-    data,
-    selectorInfo,
-    options,
-  );
+  const output: InspectReport =
+    await genericInspect<ifaces.GetRuleTagsPayload>(
+      data,
+      selectorInfo,
+      options
+    );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function tapes(
-  inputData: ifaces.GetTapesPayload,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_tapes";
+    inputData: ifaces.GetTapesPayload,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_tapes';
   const data: GetTapesPayload = new GetTapesPayload(inputData);
-  const output: InspectReport = await genericInspect<ifaces.GetTapesPayload>(
-    data,
-    selectorInfo,
-    options,
-  );
+  const output: InspectReport =
+    await genericInspect<ifaces.GetTapesPayload>(
+      data,
+      selectorInfo,
+      options
+    );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function formatInCard(
-  inputData: ifaces.FormatInCardPayload,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_formatInCard";
+    inputData: ifaces.FormatInCardPayload,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_formatInCard';
   const data: FormatInCardPayload = new FormatInCardPayload(inputData);
   const output: InspectReport =
     await genericInspect<ifaces.FormatInCardPayload>(
       data,
       selectorInfo,
-      options,
+      options
     );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function operatorAddress(
-  inputData: ifaces.EmptyClass,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_operatorAddress";
+    inputData: ifaces.EmptyClass,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_operatorAddress';
   const data: EmptyClass = new EmptyClass(inputData);
-  const output: InspectReport = await genericInspect<ifaces.EmptyClass>(
-    data,
-    selectorInfo,
-    options,
-  );
+  const output: InspectReport =
+    await genericInspect<ifaces.EmptyClass>(
+      data,
+      selectorInfo,
+      options
+    );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function adminAddress(
-  inputData: ifaces.EmptyClass,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_adminAddress";
+    inputData: ifaces.EmptyClass,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_adminAddress';
   const data: EmptyClass = new EmptyClass(inputData);
-  const output: InspectReport = await genericInspect<ifaces.EmptyClass>(
-    data,
-    selectorInfo,
-    options,
-  );
+  const output: InspectReport =
+    await genericInspect<ifaces.EmptyClass>(
+      data,
+      selectorInfo,
+      options
+    );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
 
 export async function config(
-  inputData: ifaces.EmptyClass,
-  options?: QueryOptions,
-): Promise<InspectReport | any> {
-  const selectorInfo = "core_config";
+    inputData: ifaces.EmptyClass,
+    options?:QueryOptions
+):Promise<InspectReport|any> {
+  const selectorInfo = 'core_config';
   const data: EmptyClass = new EmptyClass(inputData);
-  const output: InspectReport = await genericInspect<ifaces.EmptyClass>(
-    data,
-    selectorInfo,
-    options,
-  );
+  const output: InspectReport =
+    await genericInspect<ifaces.EmptyClass>(
+      data,
+      selectorInfo,
+      options
+    );
   if (options?.decode) {
-    return decodeToModel(output, options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
+
 
 /*
  * Indexer Query
  */
 
 export async function getOutputs(
-  inputData: indexerIfaces.IndexerPayload,
-  options: InspectOptions,
-): Promise<DecodedIndexerOutput> {
-  return genericGetOutputs(inputData, decodeToModel, options);
+    inputData: indexerIfaces.IndexerPayload,
+    options:InspectOptions
+):Promise<DecodedIndexerOutput> {
+    return genericGetOutputs(inputData,decodeToModel,options);
 }
+
 
 /**
  * Models Decoders/Exporters
@@ -718,15 +687,12 @@ export async function getOutputs(
 
 export function decodeToModel(
   data: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
-  modelName: string,
+  modelName: string
 ): any {
-  if (modelName == undefined) throw new Error("undefined model");
+  if (modelName == undefined) modelName = "json";
   if (CONVENTIONAL_TYPES.includes(modelName)) {
     if ((data as CartesiOutput).decodedData)
-      return decodeToConventionalTypes(
-        (data as CartesiOutput).decodedData.payload,
-        modelName,
-      );
+      return decodeToConventionalTypes((data as CartesiOutput).decodedData.payload, modelName);
     return decodeToConventionalTypes(data.rawData, modelName);
   }
   const decoder = models[modelName].decoder;
@@ -743,7 +709,7 @@ export function exportToModel(data: any, modelName: string): string {
 // Mutation InsertCartridgePayload
 export class InsertCartridgePayloadInput extends Input<ifaces.InsertCartridgePayload> {
   constructor(data: CartesiInput) {
-    super(models["InsertCartridgePayload"], data);
+    super(models['InsertCartridgePayload'],data);
   }
 }
 export function decodeToInsertCartridgePayloadInput(
@@ -753,12 +719,10 @@ export function decodeToInsertCartridgePayloadInput(
 }
 export class InsertCartridgePayload extends IOData<ifaces.InsertCartridgePayload> {
   constructor(data: ifaces.InsertCartridgePayload, validate: boolean = true) {
-    super(models["InsertCartridgePayload"], data, validate);
+    super(models['InsertCartridgePayload'],data,validate);
   }
 }
-export function exportToInsertCartridgePayload(
-  data: ifaces.InsertCartridgePayload,
-): string {
+export function exportToInsertCartridgePayload(data: ifaces.InsertCartridgePayload): string {
   const dataToExport: InsertCartridgePayload = new InsertCartridgePayload(data);
   return dataToExport.export();
 }
@@ -766,7 +730,7 @@ export function exportToInsertCartridgePayload(
 // Mutation SetUnlockedCartridgePayload
 export class SetUnlockedCartridgePayloadInput extends Input<ifaces.SetUnlockedCartridgePayload> {
   constructor(data: CartesiInput) {
-    super(models["SetUnlockedCartridgePayload"], data);
+    super(models['SetUnlockedCartridgePayload'],data);
   }
 }
 export function decodeToSetUnlockedCartridgePayloadInput(
@@ -775,25 +739,19 @@ export function decodeToSetUnlockedCartridgePayloadInput(
   return new SetUnlockedCartridgePayloadInput(data as CartesiInput);
 }
 export class SetUnlockedCartridgePayload extends IOData<ifaces.SetUnlockedCartridgePayload> {
-  constructor(
-    data: ifaces.SetUnlockedCartridgePayload,
-    validate: boolean = true,
-  ) {
-    super(models["SetUnlockedCartridgePayload"], data, validate);
+  constructor(data: ifaces.SetUnlockedCartridgePayload, validate: boolean = true) {
+    super(models['SetUnlockedCartridgePayload'],data,validate);
   }
 }
-export function exportToSetUnlockedCartridgePayload(
-  data: ifaces.SetUnlockedCartridgePayload,
-): string {
-  const dataToExport: SetUnlockedCartridgePayload =
-    new SetUnlockedCartridgePayload(data);
+export function exportToSetUnlockedCartridgePayload(data: ifaces.SetUnlockedCartridgePayload): string {
+  const dataToExport: SetUnlockedCartridgePayload = new SetUnlockedCartridgePayload(data);
   return dataToExport.export();
 }
 
 // Mutation RemoveCartridgePayload
 export class RemoveCartridgePayloadInput extends Input<ifaces.RemoveCartridgePayload> {
   constructor(data: CartesiInput) {
-    super(models["RemoveCartridgePayload"], data);
+    super(models['RemoveCartridgePayload'],data);
   }
 }
 export function decodeToRemoveCartridgePayloadInput(
@@ -803,12 +761,10 @@ export function decodeToRemoveCartridgePayloadInput(
 }
 export class RemoveCartridgePayload extends IOData<ifaces.RemoveCartridgePayload> {
   constructor(data: ifaces.RemoveCartridgePayload, validate: boolean = true) {
-    super(models["RemoveCartridgePayload"], data, validate);
+    super(models['RemoveCartridgePayload'],data,validate);
   }
 }
-export function exportToRemoveCartridgePayload(
-  data: ifaces.RemoveCartridgePayload,
-): string {
+export function exportToRemoveCartridgePayload(data: ifaces.RemoveCartridgePayload): string {
   const dataToExport: RemoveCartridgePayload = new RemoveCartridgePayload(data);
   return dataToExport.export();
 }
@@ -816,7 +772,7 @@ export function exportToRemoveCartridgePayload(
 // Mutation TransferCartridgePayload
 export class TransferCartridgePayloadInput extends Input<ifaces.TransferCartridgePayload> {
   constructor(data: CartesiInput) {
-    super(models["TransferCartridgePayload"], data);
+    super(models['TransferCartridgePayload'],data);
   }
 }
 export function decodeToTransferCartridgePayloadInput(
@@ -826,22 +782,18 @@ export function decodeToTransferCartridgePayloadInput(
 }
 export class TransferCartridgePayload extends IOData<ifaces.TransferCartridgePayload> {
   constructor(data: ifaces.TransferCartridgePayload, validate: boolean = true) {
-    super(models["TransferCartridgePayload"], data, validate);
+    super(models['TransferCartridgePayload'],data,validate);
   }
 }
-export function exportToTransferCartridgePayload(
-  data: ifaces.TransferCartridgePayload,
-): string {
-  const dataToExport: TransferCartridgePayload = new TransferCartridgePayload(
-    data,
-  );
+export function exportToTransferCartridgePayload(data: ifaces.TransferCartridgePayload): string {
+  const dataToExport: TransferCartridgePayload = new TransferCartridgePayload(data);
   return dataToExport.export();
 }
 
 // Mutation RuleData
 export class RuleDataInput extends Input<ifaces.RuleData> {
   constructor(data: CartesiInput) {
-    super(models["RuleData"], data);
+    super(models['RuleData'],data);
   }
 }
 export function decodeToRuleDataInput(
@@ -851,7 +803,7 @@ export function decodeToRuleDataInput(
 }
 export class RuleData extends IOData<ifaces.RuleData> {
   constructor(data: ifaces.RuleData, validate: boolean = true) {
-    super(models["RuleData"], data, validate);
+    super(models['RuleData'],data,validate);
   }
 }
 export function exportToRuleData(data: ifaces.RuleData): string {
@@ -862,7 +814,7 @@ export function exportToRuleData(data: ifaces.RuleData): string {
 // Mutation DeactivateRulePayload
 export class DeactivateRulePayloadInput extends Input<ifaces.DeactivateRulePayload> {
   constructor(data: CartesiInput) {
-    super(models["DeactivateRulePayload"], data);
+    super(models['DeactivateRulePayload'],data);
   }
 }
 export function decodeToDeactivateRulePayloadInput(
@@ -872,12 +824,10 @@ export function decodeToDeactivateRulePayloadInput(
 }
 export class DeactivateRulePayload extends IOData<ifaces.DeactivateRulePayload> {
   constructor(data: ifaces.DeactivateRulePayload, validate: boolean = true) {
-    super(models["DeactivateRulePayload"], data, validate);
+    super(models['DeactivateRulePayload'],data,validate);
   }
 }
-export function exportToDeactivateRulePayload(
-  data: ifaces.DeactivateRulePayload,
-): string {
+export function exportToDeactivateRulePayload(data: ifaces.DeactivateRulePayload): string {
   const dataToExport: DeactivateRulePayload = new DeactivateRulePayload(data);
   return dataToExport.export();
 }
@@ -885,7 +835,7 @@ export function exportToDeactivateRulePayload(
 // Mutation VerifyPayload
 export class VerifyPayloadInput extends Input<ifaces.VerifyPayload> {
   constructor(data: CartesiInput) {
-    super(models["VerifyPayload"], data);
+    super(models['VerifyPayload'],data);
   }
 }
 export function decodeToVerifyPayloadInput(
@@ -895,7 +845,7 @@ export function decodeToVerifyPayloadInput(
 }
 export class VerifyPayload extends IOData<ifaces.VerifyPayload> {
   constructor(data: ifaces.VerifyPayload, validate: boolean = true) {
-    super(models["VerifyPayload"], data, validate);
+    super(models['VerifyPayload'],data,validate);
   }
 }
 export function exportToVerifyPayload(data: ifaces.VerifyPayload): string {
@@ -906,7 +856,7 @@ export function exportToVerifyPayload(data: ifaces.VerifyPayload): string {
 // Mutation AwardWinnerTapesPayload
 export class AwardWinnerTapesPayloadInput extends Input<ifaces.AwardWinnerTapesPayload> {
   constructor(data: CartesiInput) {
-    super(models["AwardWinnerTapesPayload"], data);
+    super(models['AwardWinnerTapesPayload'],data);
   }
 }
 export function decodeToAwardWinnerTapesPayloadInput(
@@ -916,22 +866,18 @@ export function decodeToAwardWinnerTapesPayloadInput(
 }
 export class AwardWinnerTapesPayload extends IOData<ifaces.AwardWinnerTapesPayload> {
   constructor(data: ifaces.AwardWinnerTapesPayload, validate: boolean = true) {
-    super(models["AwardWinnerTapesPayload"], data, validate);
+    super(models['AwardWinnerTapesPayload'],data,validate);
   }
 }
-export function exportToAwardWinnerTapesPayload(
-  data: ifaces.AwardWinnerTapesPayload,
-): string {
-  const dataToExport: AwardWinnerTapesPayload = new AwardWinnerTapesPayload(
-    data,
-  );
+export function exportToAwardWinnerTapesPayload(data: ifaces.AwardWinnerTapesPayload): string {
+  const dataToExport: AwardWinnerTapesPayload = new AwardWinnerTapesPayload(data);
   return dataToExport.export();
 }
 
 // Mutation CleanTapesPayload
 export class CleanTapesPayloadInput extends Input<ifaces.CleanTapesPayload> {
   constructor(data: CartesiInput) {
-    super(models["CleanTapesPayload"], data);
+    super(models['CleanTapesPayload'],data);
   }
 }
 export function decodeToCleanTapesPayloadInput(
@@ -941,12 +887,10 @@ export function decodeToCleanTapesPayloadInput(
 }
 export class CleanTapesPayload extends IOData<ifaces.CleanTapesPayload> {
   constructor(data: ifaces.CleanTapesPayload, validate: boolean = true) {
-    super(models["CleanTapesPayload"], data, validate);
+    super(models['CleanTapesPayload'],data,validate);
   }
 }
-export function exportToCleanTapesPayload(
-  data: ifaces.CleanTapesPayload,
-): string {
+export function exportToCleanTapesPayload(data: ifaces.CleanTapesPayload): string {
   const dataToExport: CleanTapesPayload = new CleanTapesPayload(data);
   return dataToExport.export();
 }
@@ -954,7 +898,7 @@ export function exportToCleanTapesPayload(
 // Mutation SetOperatorPayload
 export class SetOperatorPayloadInput extends Input<ifaces.SetOperatorPayload> {
   constructor(data: CartesiInput) {
-    super(models["SetOperatorPayload"], data);
+    super(models['SetOperatorPayload'],data);
   }
 }
 export function decodeToSetOperatorPayloadInput(
@@ -964,12 +908,10 @@ export function decodeToSetOperatorPayloadInput(
 }
 export class SetOperatorPayload extends IOData<ifaces.SetOperatorPayload> {
   constructor(data: ifaces.SetOperatorPayload, validate: boolean = true) {
-    super(models["SetOperatorPayload"], data, validate);
+    super(models['SetOperatorPayload'],data,validate);
   }
 }
-export function exportToSetOperatorPayload(
-  data: ifaces.SetOperatorPayload,
-): string {
+export function exportToSetOperatorPayload(data: ifaces.SetOperatorPayload): string {
   const dataToExport: SetOperatorPayload = new SetOperatorPayload(data);
   return dataToExport.export();
 }
@@ -977,7 +919,7 @@ export function exportToSetOperatorPayload(
 // Mutation SetLock
 export class SetLockInput extends Input<ifaces.SetLock> {
   constructor(data: CartesiInput) {
-    super(models["SetLock"], data);
+    super(models['SetLock'],data);
   }
 }
 export function decodeToSetLockInput(
@@ -987,7 +929,7 @@ export function decodeToSetLockInput(
 }
 export class SetLock extends IOData<ifaces.SetLock> {
   constructor(data: ifaces.SetLock, validate: boolean = true) {
-    super(models["SetLock"], data, validate);
+    super(models['SetLock'],data,validate);
   }
 }
 export function exportToSetLock(data: ifaces.SetLock): string {
@@ -998,7 +940,7 @@ export function exportToSetLock(data: ifaces.SetLock): string {
 // Mutation SetMaxLockedCartridges
 export class SetMaxLockedCartridgesInput extends Input<ifaces.SetMaxLockedCartridges> {
   constructor(data: CartesiInput) {
-    super(models["SetMaxLockedCartridges"], data);
+    super(models['SetMaxLockedCartridges'],data);
   }
 }
 export function decodeToSetMaxLockedCartridgesInput(
@@ -1008,12 +950,10 @@ export function decodeToSetMaxLockedCartridgesInput(
 }
 export class SetMaxLockedCartridges extends IOData<ifaces.SetMaxLockedCartridges> {
   constructor(data: ifaces.SetMaxLockedCartridges, validate: boolean = true) {
-    super(models["SetMaxLockedCartridges"], data, validate);
+    super(models['SetMaxLockedCartridges'],data,validate);
   }
 }
-export function exportToSetMaxLockedCartridges(
-  data: ifaces.SetMaxLockedCartridges,
-): string {
+export function exportToSetMaxLockedCartridges(data: ifaces.SetMaxLockedCartridges): string {
   const dataToExport: SetMaxLockedCartridges = new SetMaxLockedCartridges(data);
   return dataToExport.export();
 }
@@ -1021,7 +961,7 @@ export function exportToSetMaxLockedCartridges(
 // Mutation UpdateRivosPayload
 export class UpdateRivosPayloadInput extends Input<ifaces.UpdateRivosPayload> {
   constructor(data: CartesiInput) {
-    super(models["UpdateRivosPayload"], data);
+    super(models['UpdateRivosPayload'],data);
   }
 }
 export function decodeToUpdateRivosPayloadInput(
@@ -1031,12 +971,10 @@ export function decodeToUpdateRivosPayloadInput(
 }
 export class UpdateRivosPayload extends IOData<ifaces.UpdateRivosPayload> {
   constructor(data: ifaces.UpdateRivosPayload, validate: boolean = true) {
-    super(models["UpdateRivosPayload"], data, validate);
+    super(models['UpdateRivosPayload'],data,validate);
   }
 }
-export function exportToUpdateRivosPayload(
-  data: ifaces.UpdateRivosPayload,
-): string {
+export function exportToUpdateRivosPayload(data: ifaces.UpdateRivosPayload): string {
   const dataToExport: UpdateRivosPayload = new UpdateRivosPayload(data);
   return dataToExport.export();
 }
@@ -1055,18 +993,14 @@ export function exportToUpdateRivosPayload(
 // }
 
 export class CartridgePayloadSplittable extends IOData<ifaces.CartridgePayloadSplittable> {
-  constructor(
-    data: ifaces.CartridgePayloadSplittable,
-    validate: boolean = true,
-  ) {
-    super(models["CartridgePayloadSplittable"], data, validate);
+  constructor(data: ifaces.CartridgePayloadSplittable, validate: boolean = true) {
+    super(models['CartridgePayloadSplittable'],data,validate);
   }
 }
 export function exportToCartridgePayloadSplittable(
-  data: ifaces.CartridgePayloadSplittable,
+  data: ifaces.CartridgePayloadSplittable
 ): string {
-  const dataToExport: CartridgePayloadSplittable =
-    new CartridgePayloadSplittable(data);
+  const dataToExport: CartridgePayloadSplittable = new CartridgePayloadSplittable(data);
   return dataToExport.export();
 }
 // Query CartridgePayload
@@ -1084,11 +1018,11 @@ export function exportToCartridgePayloadSplittable(
 
 export class CartridgePayload extends IOData<ifaces.CartridgePayload> {
   constructor(data: ifaces.CartridgePayload, validate: boolean = true) {
-    super(models["CartridgePayload"], data, validate);
+    super(models['CartridgePayload'],data,validate);
   }
 }
 export function exportToCartridgePayload(
-  data: ifaces.CartridgePayload,
+  data: ifaces.CartridgePayload
 ): string {
   const dataToExport: CartridgePayload = new CartridgePayload(data);
   return dataToExport.export();
@@ -1108,11 +1042,11 @@ export function exportToCartridgePayload(
 
 export class CartridgesPayload extends IOData<ifaces.CartridgesPayload> {
   constructor(data: ifaces.CartridgesPayload, validate: boolean = true) {
-    super(models["CartridgesPayload"], data, validate);
+    super(models['CartridgesPayload'],data,validate);
   }
 }
 export function exportToCartridgesPayload(
-  data: ifaces.CartridgesPayload,
+  data: ifaces.CartridgesPayload
 ): string {
   const dataToExport: CartridgesPayload = new CartridgesPayload(data);
   return dataToExport.export();
@@ -1132,15 +1066,13 @@ export function exportToCartridgesPayload(
 
 export class GetCartridgeTagsPayload extends IOData<ifaces.GetCartridgeTagsPayload> {
   constructor(data: ifaces.GetCartridgeTagsPayload, validate: boolean = true) {
-    super(models["GetCartridgeTagsPayload"], data, validate);
+    super(models['GetCartridgeTagsPayload'],data,validate);
   }
 }
 export function exportToGetCartridgeTagsPayload(
-  data: ifaces.GetCartridgeTagsPayload,
+  data: ifaces.GetCartridgeTagsPayload
 ): string {
-  const dataToExport: GetCartridgeTagsPayload = new GetCartridgeTagsPayload(
-    data,
-  );
+  const dataToExport: GetCartridgeTagsPayload = new GetCartridgeTagsPayload(data);
   return dataToExport.export();
 }
 // Query GetCartridgeAuthorsPayload
@@ -1157,18 +1089,14 @@ export function exportToGetCartridgeTagsPayload(
 // }
 
 export class GetCartridgeAuthorsPayload extends IOData<ifaces.GetCartridgeAuthorsPayload> {
-  constructor(
-    data: ifaces.GetCartridgeAuthorsPayload,
-    validate: boolean = true,
-  ) {
-    super(models["GetCartridgeAuthorsPayload"], data, validate);
+  constructor(data: ifaces.GetCartridgeAuthorsPayload, validate: boolean = true) {
+    super(models['GetCartridgeAuthorsPayload'],data,validate);
   }
 }
 export function exportToGetCartridgeAuthorsPayload(
-  data: ifaces.GetCartridgeAuthorsPayload,
+  data: ifaces.GetCartridgeAuthorsPayload
 ): string {
-  const dataToExport: GetCartridgeAuthorsPayload =
-    new GetCartridgeAuthorsPayload(data);
+  const dataToExport: GetCartridgeAuthorsPayload = new GetCartridgeAuthorsPayload(data);
   return dataToExport.export();
 }
 // Query GetRulesPayload
@@ -1186,10 +1114,12 @@ export function exportToGetCartridgeAuthorsPayload(
 
 export class GetRulesPayload extends IOData<ifaces.GetRulesPayload> {
   constructor(data: ifaces.GetRulesPayload, validate: boolean = true) {
-    super(models["GetRulesPayload"], data, validate);
+    super(models['GetRulesPayload'],data,validate);
   }
 }
-export function exportToGetRulesPayload(data: ifaces.GetRulesPayload): string {
+export function exportToGetRulesPayload(
+  data: ifaces.GetRulesPayload
+): string {
   const dataToExport: GetRulesPayload = new GetRulesPayload(data);
   return dataToExport.export();
 }
@@ -1208,11 +1138,11 @@ export function exportToGetRulesPayload(data: ifaces.GetRulesPayload): string {
 
 export class GetRuleTagsPayload extends IOData<ifaces.GetRuleTagsPayload> {
   constructor(data: ifaces.GetRuleTagsPayload, validate: boolean = true) {
-    super(models["GetRuleTagsPayload"], data, validate);
+    super(models['GetRuleTagsPayload'],data,validate);
   }
 }
 export function exportToGetRuleTagsPayload(
-  data: ifaces.GetRuleTagsPayload,
+  data: ifaces.GetRuleTagsPayload
 ): string {
   const dataToExport: GetRuleTagsPayload = new GetRuleTagsPayload(data);
   return dataToExport.export();
@@ -1232,10 +1162,12 @@ export function exportToGetRuleTagsPayload(
 
 export class GetTapesPayload extends IOData<ifaces.GetTapesPayload> {
   constructor(data: ifaces.GetTapesPayload, validate: boolean = true) {
-    super(models["GetTapesPayload"], data, validate);
+    super(models['GetTapesPayload'],data,validate);
   }
 }
-export function exportToGetTapesPayload(data: ifaces.GetTapesPayload): string {
+export function exportToGetTapesPayload(
+  data: ifaces.GetTapesPayload
+): string {
   const dataToExport: GetTapesPayload = new GetTapesPayload(data);
   return dataToExport.export();
 }
@@ -1254,11 +1186,11 @@ export function exportToGetTapesPayload(data: ifaces.GetTapesPayload): string {
 
 export class FormatInCardPayload extends IOData<ifaces.FormatInCardPayload> {
   constructor(data: ifaces.FormatInCardPayload, validate: boolean = true) {
-    super(models["FormatInCardPayload"], data, validate);
+    super(models['FormatInCardPayload'],data,validate);
   }
 }
 export function exportToFormatInCardPayload(
-  data: ifaces.FormatInCardPayload,
+  data: ifaces.FormatInCardPayload
 ): string {
   const dataToExport: FormatInCardPayload = new FormatInCardPayload(data);
   return dataToExport.export();
@@ -1278,10 +1210,12 @@ export function exportToFormatInCardPayload(
 
 export class EmptyClass extends IOData<ifaces.EmptyClass> {
   constructor(data: ifaces.EmptyClass, validate: boolean = true) {
-    super(models["EmptyClass"], data, validate);
+    super(models['EmptyClass'],data,validate);
   }
 }
-export function exportToEmptyClass(data: ifaces.EmptyClass): string {
+export function exportToEmptyClass(
+  data: ifaces.EmptyClass
+): string {
   const dataToExport: EmptyClass = new EmptyClass(data);
   return dataToExport.export();
 }
@@ -1289,11 +1223,11 @@ export function exportToEmptyClass(data: ifaces.EmptyClass): string {
 
 export class CartridgeInfo extends Output<ifaces.CartridgeInfo> {
   constructor(output: CartesiReport | InspectReport) {
-    super(models["CartridgeInfo"], output);
+    super(models['CartridgeInfo'],output);
   }
 }
 export function decodeToCartridgeInfo(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): CartridgeInfo {
   return new CartridgeInfo(output as CartesiReport);
 }
@@ -1302,11 +1236,11 @@ export function decodeToCartridgeInfo(
 
 export class CartridgesOutput extends Output<ifaces.CartridgesOutput> {
   constructor(output: CartesiReport | InspectReport) {
-    super(models["CartridgesOutput"], output);
+    super(models['CartridgesOutput'],output);
   }
 }
 export function decodeToCartridgesOutput(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): CartridgesOutput {
   return new CartridgesOutput(output as CartesiReport);
 }
@@ -1315,11 +1249,11 @@ export function decodeToCartridgesOutput(
 
 export class CartridgeTagsOutput extends Output<ifaces.CartridgeTagsOutput> {
   constructor(output: CartesiReport | InspectReport) {
-    super(models["CartridgeTagsOutput"], output);
+    super(models['CartridgeTagsOutput'],output);
   }
 }
 export function decodeToCartridgeTagsOutput(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): CartridgeTagsOutput {
   return new CartridgeTagsOutput(output as CartesiReport);
 }
@@ -1328,11 +1262,11 @@ export function decodeToCartridgeTagsOutput(
 
 export class CartridgeAuthorsOutput extends Output<ifaces.CartridgeAuthorsOutput> {
   constructor(output: CartesiReport | InspectReport) {
-    super(models["CartridgeAuthorsOutput"], output);
+    super(models['CartridgeAuthorsOutput'],output);
   }
 }
 export function decodeToCartridgeAuthorsOutput(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): CartridgeAuthorsOutput {
   return new CartridgeAuthorsOutput(output as CartesiReport);
 }
@@ -1341,11 +1275,11 @@ export function decodeToCartridgeAuthorsOutput(
 
 export class RulesOutput extends Output<ifaces.RulesOutput> {
   constructor(output: CartesiReport | InspectReport) {
-    super(models["RulesOutput"], output);
+    super(models['RulesOutput'],output);
   }
 }
 export function decodeToRulesOutput(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): RulesOutput {
   return new RulesOutput(output as CartesiReport);
 }
@@ -1354,11 +1288,11 @@ export function decodeToRulesOutput(
 
 export class RuleTagsOutput extends Output<ifaces.RuleTagsOutput> {
   constructor(output: CartesiReport | InspectReport) {
-    super(models["RuleTagsOutput"], output);
+    super(models['RuleTagsOutput'],output);
   }
 }
 export function decodeToRuleTagsOutput(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): RuleTagsOutput {
   return new RuleTagsOutput(output as CartesiReport);
 }
@@ -1367,11 +1301,11 @@ export function decodeToRuleTagsOutput(
 
 export class TapesOutput extends Output<ifaces.TapesOutput> {
   constructor(output: CartesiReport | InspectReport) {
-    super(models["TapesOutput"], output);
+    super(models['TapesOutput'],output);
   }
 }
 export function decodeToTapesOutput(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): TapesOutput {
   return new TapesOutput(output as CartesiReport);
 }
@@ -1380,11 +1314,11 @@ export function decodeToTapesOutput(
 
 export class CartridgeEvent extends OutputWithProof<ifaces.CartridgeEvent> {
   constructor(output: CartesiOutput) {
-    super(models["CartridgeEvent"], output);
+    super(models['CartridgeEvent'],output);
   }
 }
 export function decodeToCartridgeEvent(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): CartridgeEvent {
   return new CartridgeEvent(output as CartesiOutput);
 }
@@ -1393,11 +1327,11 @@ export function decodeToCartridgeEvent(
 
 export class CartridgeRemoved extends OutputWithProof<ifaces.CartridgeRemoved> {
   constructor(output: CartesiOutput) {
-    super(models["CartridgeRemoved"], output);
+    super(models['CartridgeRemoved'],output);
   }
 }
 export function decodeToCartridgeRemoved(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): CartridgeRemoved {
   return new CartridgeRemoved(output as CartesiOutput);
 }
@@ -1406,11 +1340,11 @@ export function decodeToCartridgeRemoved(
 
 export class RuleCreated extends OutputWithProof<ifaces.RuleCreated> {
   constructor(output: CartesiOutput) {
-    super(models["RuleCreated"], output);
+    super(models['RuleCreated'],output);
   }
 }
 export function decodeToRuleCreated(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): RuleCreated {
   return new RuleCreated(output as CartesiOutput);
 }
@@ -1419,11 +1353,11 @@ export function decodeToRuleCreated(
 
 export class VerificationOutput extends OutputWithProof<ifaces.VerificationOutput> {
   constructor(output: CartesiOutput) {
-    super(models["VerificationOutput"], output);
+    super(models['VerificationOutput'],output);
   }
 }
 export function decodeToVerificationOutput(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): VerificationOutput {
   return new VerificationOutput(output as CartesiOutput);
 }
@@ -1432,644 +1366,481 @@ export function decodeToVerificationOutput(
 
 export class TapeAward extends OutputWithProof<ifaces.TapeAward> {
   constructor(output: CartesiOutput) {
-    super(models["TapeAward"], output);
+    super(models['TapeAward'],output);
   }
 }
 export function decodeToTapeAward(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
 ): TapeAward {
   return new TapeAward(output as CartesiOutput);
 }
+
 
 /**
  * Model
  */
 
 export const models: Models = {
-  InsertCartridgePayload: {
-    ioType: "mutationPayload",
-    abiTypes: ["bytes"],
-    params: ["data"],
+  'InsertCartridgePayload': {
+    ioType:"mutationPayload",
+    abiTypes:['bytes'],
+    params:['data'],
     decoder: decodeToInsertCartridgePayloadInput,
     exporter: exportToInsertCartridgePayload,
     validator: ajv.compile<ifaces.InsertCartridgePayload>(
       JSON.parse(
         '{"title": "InsertCartridgePayload", "type": "object", "properties": {"data": {"title": "Data", "type": "string", "format": "binary"}}, "required": ["data"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  SetUnlockedCartridgePayload: {
-    ioType: "mutationPayload",
-    abiTypes: ["bytes32[]", "bool[]"],
-    params: ["ids", "unlocks"],
+  'SetUnlockedCartridgePayload': {
+    ioType:"mutationPayload",
+    abiTypes:['bytes32[]', 'bool[]'],
+    params:['ids', 'unlocks'],
     decoder: decodeToSetUnlockedCartridgePayloadInput,
     exporter: exportToSetUnlockedCartridgePayload,
     validator: ajv.compile<ifaces.SetUnlockedCartridgePayload>(
       JSON.parse(
         '{"title": "SetUnlockedCartridgePayload", "type": "object", "properties": {"ids": {"title": "Ids", "type": "array", "items": {"type": "string", "format": "binary"}}, "unlocks": {"title": "Unlocks", "type": "array", "items": {"type": "boolean"}}}, "required": ["ids", "unlocks"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  RemoveCartridgePayload: {
-    ioType: "mutationPayload",
-    abiTypes: ["bytes32"],
-    params: ["id"],
+  'RemoveCartridgePayload': {
+    ioType:"mutationPayload",
+    abiTypes:['bytes32'],
+    params:['id'],
     decoder: decodeToRemoveCartridgePayloadInput,
     exporter: exportToRemoveCartridgePayload,
     validator: ajv.compile<ifaces.RemoveCartridgePayload>(
       JSON.parse(
         '{"title": "RemoveCartridgePayload", "type": "object", "properties": {"id": {"title": "Id", "type": "string", "format": "binary"}}, "required": ["id"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  TransferCartridgePayload: {
-    ioType: "mutationPayload",
-    abiTypes: ["bytes32", "address"],
-    params: ["id", "new_user_address"],
+  'TransferCartridgePayload': {
+    ioType:"mutationPayload",
+    abiTypes:['bytes32', 'address'],
+    params:['id', 'new_user_address'],
     decoder: decodeToTransferCartridgePayloadInput,
     exporter: exportToTransferCartridgePayload,
     validator: ajv.compile<ifaces.TransferCartridgePayload>(
       JSON.parse(
         '{"title": "TransferCartridgePayload", "type": "object", "properties": {"id": {"title": "Id", "type": "string", "format": "binary"}, "new_user_address": {"title": "New User Address", "type": "string"}}, "required": ["id", "new_user_address"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  RuleData: {
-    ioType: "mutationPayload",
-    abiTypes: [
-      "bytes32",
-      "string",
-      "string",
-      "string",
-      "bytes",
-      "string",
-      "uint",
-      "uint",
-      "string[]",
-      "bytes32[]",
-      "bool",
-      "bool",
-      "bool",
-      "bool",
-    ],
-    params: [
-      "cartridge_id",
-      "name",
-      "description",
-      "args",
-      "in_card",
-      "score_function",
-      "start",
-      "end",
-      "tags",
-      "tapes",
-      "allow_tapes",
-      "allow_in_card",
-      "save_tapes",
-      "save_out_cards",
-    ],
+  'RuleData': {
+    ioType:"mutationPayload",
+    abiTypes:['bytes32', 'string', 'string', 'string', 'bytes', 'string', 'uint', 'uint', 'string[]', 'bytes32[]', 'bool', 'bool', 'bool', 'bool'],
+    params:['cartridge_id', 'name', 'description', 'args', 'in_card', 'score_function', 'start', 'end', 'tags', 'tapes', 'allow_tapes', 'allow_in_card', 'save_tapes', 'save_out_cards'],
     decoder: decodeToRuleDataInput,
     exporter: exportToRuleData,
     validator: ajv.compile<ifaces.RuleData>(
       JSON.parse(
         '{"title": "RuleData", "type": "object", "properties": {"cartridge_id": {"title": "Cartridge Id", "type": "string", "format": "binary"}, "name": {"title": "Name", "type": "string"}, "description": {"title": "Description", "type": "string"}, "args": {"title": "Args", "type": "string"}, "in_card": {"title": "In Card", "type": "string", "format": "binary"}, "score_function": {"title": "Score Function", "type": "string"}, "start": {"title": "Start", "type": "integer"}, "end": {"title": "End", "type": "integer"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string", "format": "binary"}}, "allow_tapes": {"title": "Allow Tapes", "type": "boolean"}, "allow_in_card": {"title": "Allow In Card", "type": "boolean"}, "save_tapes": {"title": "Save Tapes", "type": "boolean"}, "save_out_cards": {"title": "Save Out Cards", "type": "boolean"}}, "required": ["cartridge_id", "name", "description", "args", "in_card", "score_function", "start", "end", "tags", "tapes", "allow_tapes", "allow_in_card", "save_tapes", "save_out_cards"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  DeactivateRulePayload: {
-    ioType: "mutationPayload",
-    abiTypes: ["bytes32"],
-    params: ["rule_id"],
+  'DeactivateRulePayload': {
+    ioType:"mutationPayload",
+    abiTypes:['bytes32'],
+    params:['rule_id'],
     decoder: decodeToDeactivateRulePayloadInput,
     exporter: exportToDeactivateRulePayload,
     validator: ajv.compile<ifaces.DeactivateRulePayload>(
       JSON.parse(
         '{"title": "DeactivateRulePayload", "type": "object", "properties": {"rule_id": {"title": "Rule Id", "type": "string", "format": "binary"}}, "required": ["rule_id"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  VerifyPayload: {
-    ioType: "mutationPayload",
-    abiTypes: ["bytes32", "bytes32", "bytes", "int", "bytes32[]", "bytes"],
-    params: [
-      "rule_id",
-      "outcard_hash",
-      "tape",
-      "claimed_score",
-      "tapes",
-      "in_card",
-    ],
+  'VerifyPayload': {
+    ioType:"mutationPayload",
+    abiTypes:['bytes32', 'bytes32', 'bytes', 'int', 'bytes32[]', 'bytes'],
+    params:['rule_id', 'outcard_hash', 'tape', 'claimed_score', 'tapes', 'in_card'],
     decoder: decodeToVerifyPayloadInput,
     exporter: exportToVerifyPayload,
     validator: ajv.compile<ifaces.VerifyPayload>(
       JSON.parse(
         '{"title": "VerifyPayload", "type": "object", "properties": {"rule_id": {"title": "Rule Id", "type": "string", "format": "binary"}, "outcard_hash": {"title": "Outcard Hash", "type": "string", "format": "binary"}, "tape": {"title": "Tape", "type": "string", "format": "binary"}, "claimed_score": {"title": "Claimed Score", "type": "integer"}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string", "format": "binary"}}, "in_card": {"title": "In Card", "type": "string", "format": "binary"}}, "required": ["rule_id", "outcard_hash", "tape", "claimed_score", "tapes", "in_card"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  AwardWinnerTapesPayload: {
-    ioType: "mutationPayload",
-    abiTypes: ["bytes32", "uint", "bool"],
-    params: ["rule_id", "tapes_to_award", "avoid_duplicates"],
+  'AwardWinnerTapesPayload': {
+    ioType:"mutationPayload",
+    abiTypes:['bytes32', 'uint', 'bool'],
+    params:['rule_id', 'tapes_to_award', 'avoid_duplicates'],
     decoder: decodeToAwardWinnerTapesPayloadInput,
     exporter: exportToAwardWinnerTapesPayload,
     validator: ajv.compile<ifaces.AwardWinnerTapesPayload>(
       JSON.parse(
         '{"title": "AwardWinnerTapesPayload", "type": "object", "properties": {"rule_id": {"title": "Rule Id", "type": "string", "format": "binary"}, "tapes_to_award": {"title": "Tapes To Award", "type": "integer"}, "avoid_duplicates": {"title": "Avoid Duplicates", "type": "boolean"}}, "required": ["rule_id", "tapes_to_award", "avoid_duplicates"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  CleanTapesPayload: {
-    ioType: "mutationPayload",
-    abiTypes: ["bytes32"],
-    params: ["rule_id"],
+  'CleanTapesPayload': {
+    ioType:"mutationPayload",
+    abiTypes:['bytes32'],
+    params:['rule_id'],
     decoder: decodeToCleanTapesPayloadInput,
     exporter: exportToCleanTapesPayload,
     validator: ajv.compile<ifaces.CleanTapesPayload>(
       JSON.parse(
         '{"title": "CleanTapesPayload", "type": "object", "properties": {"rule_id": {"title": "Rule Id", "type": "string", "format": "binary"}}, "required": ["rule_id"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  SetOperatorPayload: {
-    ioType: "mutationPayload",
-    abiTypes: ["address"],
-    params: ["new_operator_address"],
+  'SetOperatorPayload': {
+    ioType:"mutationPayload",
+    abiTypes:['address'],
+    params:['new_operator_address'],
     decoder: decodeToSetOperatorPayloadInput,
     exporter: exportToSetOperatorPayload,
     validator: ajv.compile<ifaces.SetOperatorPayload>(
       JSON.parse(
         '{"title": "SetOperatorPayload", "type": "object", "properties": {"new_operator_address": {"title": "New Operator Address", "type": "string"}}, "required": ["new_operator_address"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  SetLock: {
-    ioType: "mutationPayload",
-    abiTypes: ["bool"],
-    params: ["lock"],
+  'SetLock': {
+    ioType:"mutationPayload",
+    abiTypes:['bool'],
+    params:['lock'],
     decoder: decodeToSetLockInput,
     exporter: exportToSetLock,
     validator: ajv.compile<ifaces.SetLock>(
       JSON.parse(
         '{"title": "SetLock", "type": "object", "properties": {"lock": {"title": "Lock", "type": "boolean"}}, "required": ["lock"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  SetMaxLockedCartridges: {
-    ioType: "mutationPayload",
-    abiTypes: ["uint"],
-    params: ["max_locked_cartridges"],
+  'SetMaxLockedCartridges': {
+    ioType:"mutationPayload",
+    abiTypes:['uint'],
+    params:['max_locked_cartridges'],
     decoder: decodeToSetMaxLockedCartridgesInput,
     exporter: exportToSetMaxLockedCartridges,
     validator: ajv.compile<ifaces.SetMaxLockedCartridges>(
       JSON.parse(
         '{"title": "SetMaxLockedCartridges", "type": "object", "properties": {"max_locked_cartridges": {"title": "Max Locked Cartridges", "type": "integer"}}, "required": ["max_locked_cartridges"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  UpdateRivosPayload: {
-    ioType: "mutationPayload",
-    abiTypes: ["bytes"],
-    params: ["data"],
+  'UpdateRivosPayload': {
+    ioType:"mutationPayload",
+    abiTypes:['bytes'],
+    params:['data'],
     decoder: decodeToUpdateRivosPayloadInput,
     exporter: exportToUpdateRivosPayload,
     validator: ajv.compile<ifaces.UpdateRivosPayload>(
       JSON.parse(
         '{"title": "UpdateRivosPayload", "type": "object", "properties": {"data": {"title": "Data", "type": "string", "format": "binary"}}, "required": ["data"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  CartridgePayloadSplittable: {
-    ioType: "queryJsonPayload",
-    abiTypes: [],
-    params: ["id", "part"],
+  'CartridgePayloadSplittable': {
+    ioType:"queryJsonPayload",
+    abiTypes:[],
+    params:['id', 'part'],
     // decoder: decodeToCartridgePayloadSplittableInput,
     exporter: exportToCartridgePayloadSplittable,
     validator: ajv.compile<ifaces.CartridgePayloadSplittable>(
       JSON.parse(
-        '{"title": "CartridgePayloadSplittable", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}, "part": {"title": "Part", "type": "integer"}}, "required": ["id"]}',
-      ),
-    ),
+        '{"title": "CartridgePayloadSplittable", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}, "part": {"title": "Part", "type": "integer"}}, "required": ["id"]}'
+      )
+    )
   },
-  CartridgePayload: {
-    ioType: "queryJsonPayload",
-    abiTypes: [],
-    params: ["id"],
+  'CartridgePayload': {
+    ioType:"queryJsonPayload",
+    abiTypes:[],
+    params:['id'],
     // decoder: decodeToCartridgePayloadInput,
     exporter: exportToCartridgePayload,
     validator: ajv.compile<ifaces.CartridgePayload>(
       JSON.parse(
-        '{"title": "CartridgePayload", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}}, "required": ["id"]}',
-      ),
-    ),
+        '{"title": "CartridgePayload", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}}, "required": ["id"]}'
+      )
+    )
   },
-  CartridgesPayload: {
-    ioType: "queryJsonPayload",
-    abiTypes: [],
-    params: [
-      "name",
-      "author",
-      "tags",
-      "ids",
-      "user_address",
-      "page",
-      "page_size",
-      "order_by",
-      "order_dir",
-      "get_cover",
-      "tags_or",
-      "full",
-      "enable_inactive",
-      "enable_non_primary",
-      "locked",
-    ],
+  'CartridgesPayload': {
+    ioType:"queryJsonPayload",
+    abiTypes:[],
+    params:['name', 'author', 'tags', 'ids', 'user_address', 'page', 'page_size', 'order_by', 'order_dir', 'get_cover', 'tags_or', 'full', 'enable_inactive', 'enable_non_primary', 'locked'],
     // decoder: decodeToCartridgesPayloadInput,
     exporter: exportToCartridgesPayload,
     validator: ajv.compile<ifaces.CartridgesPayload>(
       JSON.parse(
-        '{"title": "CartridgesPayload", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "author": {"title": "Author", "type": "string"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "ids": {"title": "Ids", "type": "array", "items": {"type": "string"}}, "user_address": {"title": "User Address", "type": "string"}, "page": {"title": "Page", "type": "integer"}, "page_size": {"title": "Page Size", "type": "integer"}, "order_by": {"title": "Order By", "type": "string"}, "order_dir": {"title": "Order Dir", "type": "string"}, "get_cover": {"title": "Get Cover", "type": "boolean"}, "tags_or": {"title": "Tags Or", "type": "boolean"}, "full": {"title": "Full", "type": "boolean"}, "enable_inactive": {"title": "Enable Inactive", "type": "boolean"}, "enable_non_primary": {"title": "Enable Non Primary", "type": "boolean"}, "locked": {"title": "Locked", "type": "boolean"}}}',
-      ),
-    ),
+        '{"title": "CartridgesPayload", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "author": {"title": "Author", "type": "string"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "ids": {"title": "Ids", "type": "array", "items": {"type": "string"}}, "user_address": {"title": "User Address", "type": "string"}, "page": {"title": "Page", "type": "integer"}, "page_size": {"title": "Page Size", "type": "integer"}, "order_by": {"title": "Order By", "type": "string"}, "order_dir": {"title": "Order Dir", "type": "string"}, "get_cover": {"title": "Get Cover", "type": "boolean"}, "tags_or": {"title": "Tags Or", "type": "boolean"}, "full": {"title": "Full", "type": "boolean"}, "enable_inactive": {"title": "Enable Inactive", "type": "boolean"}, "enable_non_primary": {"title": "Enable Non Primary", "type": "boolean"}, "locked": {"title": "Locked", "type": "boolean"}}}'
+      )
+    )
   },
-  GetCartridgeTagsPayload: {
-    ioType: "queryJsonPayload",
-    abiTypes: [],
-    params: ["name"],
+  'GetCartridgeTagsPayload': {
+    ioType:"queryJsonPayload",
+    abiTypes:[],
+    params:['name'],
     // decoder: decodeToGetCartridgeTagsPayloadInput,
     exporter: exportToGetCartridgeTagsPayload,
     validator: ajv.compile<ifaces.GetCartridgeTagsPayload>(
       JSON.parse(
-        '{"title": "GetCartridgeTagsPayload", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}}}',
-      ),
-    ),
+        '{"title": "GetCartridgeTagsPayload", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}}}'
+      )
+    )
   },
-  GetCartridgeAuthorsPayload: {
-    ioType: "queryJsonPayload",
-    abiTypes: [],
-    params: ["name"],
+  'GetCartridgeAuthorsPayload': {
+    ioType:"queryJsonPayload",
+    abiTypes:[],
+    params:['name'],
     // decoder: decodeToGetCartridgeAuthorsPayloadInput,
     exporter: exportToGetCartridgeAuthorsPayload,
     validator: ajv.compile<ifaces.GetCartridgeAuthorsPayload>(
       JSON.parse(
-        '{"title": "GetCartridgeAuthorsPayload", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}}}',
-      ),
-    ),
+        '{"title": "GetCartridgeAuthorsPayload", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}}}'
+      )
+    )
   },
-  GetRulesPayload: {
-    ioType: "queryJsonPayload",
-    abiTypes: [],
-    params: [
-      "cartridge_id",
-      "id",
-      "ids",
-      "active_ts",
-      "has_start",
-      "has_end",
-      "created_by",
-      "name",
-      "page",
-      "page_size",
-      "order_by",
-      "order_dir",
-      "tags",
-      "tags_or",
-      "full",
-      "enable_deactivated",
-    ],
+  'GetRulesPayload': {
+    ioType:"queryJsonPayload",
+    abiTypes:[],
+    params:['cartridge_id', 'id', 'ids', 'active_ts', 'has_start', 'has_end', 'created_by', 'name', 'page', 'page_size', 'order_by', 'order_dir', 'tags', 'tags_or', 'full', 'enable_deactivated'],
     // decoder: decodeToGetRulesPayloadInput,
     exporter: exportToGetRulesPayload,
     validator: ajv.compile<ifaces.GetRulesPayload>(
       JSON.parse(
-        '{"title": "GetRulesPayload", "type": "object", "properties": {"cartridge_id": {"title": "Cartridge Id", "type": "string"}, "id": {"title": "Id", "type": "string"}, "ids": {"title": "Ids", "type": "array", "items": {"type": "string"}}, "active_ts": {"title": "Active Ts", "type": "integer"}, "has_start": {"title": "Has Start", "type": "boolean"}, "has_end": {"title": "Has End", "type": "boolean"}, "created_by": {"title": "Created By", "type": "string"}, "name": {"title": "Name", "type": "string"}, "page": {"title": "Page", "type": "integer"}, "page_size": {"title": "Page Size", "type": "integer"}, "order_by": {"title": "Order By", "type": "string"}, "order_dir": {"title": "Order Dir", "type": "string"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "tags_or": {"title": "Tags Or", "type": "boolean"}, "full": {"title": "Full", "type": "boolean"}, "enable_deactivated": {"title": "Enable Deactivated", "type": "boolean"}}}',
-      ),
-    ),
+        '{"title": "GetRulesPayload", "type": "object", "properties": {"cartridge_id": {"title": "Cartridge Id", "type": "string"}, "id": {"title": "Id", "type": "string"}, "ids": {"title": "Ids", "type": "array", "items": {"type": "string"}}, "active_ts": {"title": "Active Ts", "type": "integer"}, "has_start": {"title": "Has Start", "type": "boolean"}, "has_end": {"title": "Has End", "type": "boolean"}, "created_by": {"title": "Created By", "type": "string"}, "name": {"title": "Name", "type": "string"}, "page": {"title": "Page", "type": "integer"}, "page_size": {"title": "Page Size", "type": "integer"}, "order_by": {"title": "Order By", "type": "string"}, "order_dir": {"title": "Order Dir", "type": "string"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "tags_or": {"title": "Tags Or", "type": "boolean"}, "full": {"title": "Full", "type": "boolean"}, "enable_deactivated": {"title": "Enable Deactivated", "type": "boolean"}}}'
+      )
+    )
   },
-  GetRuleTagsPayload: {
-    ioType: "queryJsonPayload",
-    abiTypes: [],
-    params: ["name", "cartridge_id"],
+  'GetRuleTagsPayload': {
+    ioType:"queryJsonPayload",
+    abiTypes:[],
+    params:['name', 'cartridge_id'],
     // decoder: decodeToGetRuleTagsPayloadInput,
     exporter: exportToGetRuleTagsPayload,
     validator: ajv.compile<ifaces.GetRuleTagsPayload>(
       JSON.parse(
-        '{"title": "GetRuleTagsPayload", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "cartridge_id": {"title": "Cartridge Id", "type": "string"}}}',
-      ),
-    ),
+        '{"title": "GetRuleTagsPayload", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "cartridge_id": {"title": "Cartridge Id", "type": "string"}}}'
+      )
+    )
   },
-  GetTapesPayload: {
-    ioType: "queryJsonPayload",
-    abiTypes: [],
-    params: [
-      "cartridge_id",
-      "rule_id",
-      "id",
-      "user_address",
-      "ids",
-      "timestamp_lte",
-      "timestamp_gte",
-      "rank_lte",
-      "rank_gte",
-      "page",
-      "page_size",
-      "order_by",
-      "order_dir",
-      "tags",
-      "tags_or",
-      "full",
-    ],
+  'GetTapesPayload': {
+    ioType:"queryJsonPayload",
+    abiTypes:[],
+    params:['cartridge_id', 'rule_id', 'id', 'user_address', 'ids', 'timestamp_lte', 'timestamp_gte', 'rank_lte', 'rank_gte', 'page', 'page_size', 'order_by', 'order_dir', 'tags', 'tags_or', 'full'],
     // decoder: decodeToGetTapesPayloadInput,
     exporter: exportToGetTapesPayload,
     validator: ajv.compile<ifaces.GetTapesPayload>(
       JSON.parse(
-        '{"title": "GetTapesPayload", "type": "object", "properties": {"cartridge_id": {"title": "Cartridge Id", "type": "string"}, "rule_id": {"title": "Rule Id", "type": "string"}, "id": {"title": "Id", "type": "string"}, "user_address": {"title": "User Address", "type": "string"}, "ids": {"title": "Ids", "type": "array", "items": {"type": "string"}}, "timestamp_lte": {"title": "Timestamp Lte", "type": "integer"}, "timestamp_gte": {"title": "Timestamp Gte", "type": "integer"}, "rank_lte": {"title": "Rank Lte", "type": "integer"}, "rank_gte": {"title": "Rank Gte", "type": "integer"}, "page": {"title": "Page", "type": "integer"}, "page_size": {"title": "Page Size", "type": "integer"}, "order_by": {"title": "Order By", "type": "string"}, "order_dir": {"title": "Order Dir", "type": "string"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "tags_or": {"title": "Tags Or", "type": "boolean"}, "full": {"title": "Full", "type": "boolean"}}}',
-      ),
-    ),
+        '{"title": "GetTapesPayload", "type": "object", "properties": {"cartridge_id": {"title": "Cartridge Id", "type": "string"}, "rule_id": {"title": "Rule Id", "type": "string"}, "id": {"title": "Id", "type": "string"}, "user_address": {"title": "User Address", "type": "string"}, "ids": {"title": "Ids", "type": "array", "items": {"type": "string"}}, "timestamp_lte": {"title": "Timestamp Lte", "type": "integer"}, "timestamp_gte": {"title": "Timestamp Gte", "type": "integer"}, "rank_lte": {"title": "Rank Lte", "type": "integer"}, "rank_gte": {"title": "Rank Gte", "type": "integer"}, "page": {"title": "Page", "type": "integer"}, "page_size": {"title": "Page Size", "type": "integer"}, "order_by": {"title": "Order By", "type": "string"}, "order_dir": {"title": "Order Dir", "type": "string"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "tags_or": {"title": "Tags Or", "type": "boolean"}, "full": {"title": "Full", "type": "boolean"}}}'
+      )
+    )
   },
-  FormatInCardPayload: {
-    ioType: "queryJsonPayload",
-    abiTypes: [],
-    params: ["rule_id", "cartridge_id", "in_card", "tapes"],
+  'FormatInCardPayload': {
+    ioType:"queryJsonPayload",
+    abiTypes:[],
+    params:['rule_id', 'cartridge_id', 'in_card', 'tapes'],
     // decoder: decodeToFormatInCardPayloadInput,
     exporter: exportToFormatInCardPayload,
     validator: ajv.compile<ifaces.FormatInCardPayload>(
       JSON.parse(
-        '{"title": "FormatInCardPayload", "type": "object", "properties": {"rule_id": {"title": "Rule Id", "type": "string"}, "cartridge_id": {"title": "Cartridge Id", "type": "string"}, "in_card": {"title": "In Card", "type": "string"}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}}}',
-      ),
-    ),
+        '{"title": "FormatInCardPayload", "type": "object", "properties": {"rule_id": {"title": "Rule Id", "type": "string"}, "cartridge_id": {"title": "Cartridge Id", "type": "string"}, "in_card": {"title": "In Card", "type": "string"}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}}}'
+      )
+    )
   },
-  EmptyClass: {
-    ioType: "queryJsonPayload",
-    abiTypes: [],
-    params: [],
+  'EmptyClass': {
+    ioType:"queryJsonPayload",
+    abiTypes:[],
+    params:[],
     // decoder: decodeToEmptyClassInput,
     exporter: exportToEmptyClass,
     validator: ajv.compile<ifaces.EmptyClass>(
-      JSON.parse('{"title": "EmptyClass", "type": "object", "properties": {}}'),
-    ),
+      JSON.parse(
+        '{"title": "EmptyClass", "type": "object", "properties": {}}'
+      )
+    )
   },
-  CartridgeInfo: {
-    ioType: "report",
-    abiTypes: [],
-    params: [
-      "id",
-      "name",
-      "user_address",
-      "input_index",
-      "authors",
-      "info",
-      "original_info",
-      "created_at",
-      "updated_at",
-      "cover",
-      "active",
-      "unlocked",
-      "primary",
-      "primary_id",
-      "last_version",
-      "versions",
-      "tapes",
-      "tags",
-    ],
+  'CartridgeInfo': {
+    ioType:"report",
+    abiTypes:[],
+    params:['id', 'name', 'user_address', 'input_index', 'authors', 'info', 'original_info', 'created_at', 'updated_at', 'cover', 'active', 'unlocked', 'primary', 'primary_id', 'last_version', 'versions', 'tapes', 'tags'],
     decoder: decodeToCartridgeInfo,
     validator: ajv.compile<ifaces.CartridgeInfo>(
       JSON.parse(
-        '{"title": "CartridgeInfo", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}, "name": {"title": "Name", "type": "string"}, "user_address": {"title": "User Address", "type": "string"}, "input_index": {"title": "Input Index", "type": "integer"}, "authors": {"title": "Authors", "type": "array", "items": {"type": "string"}}, "info": {"$ref": "#/definitions/InfoCartridge"}, "original_info": {"$ref": "#/definitions/InfoCartridge"}, "created_at": {"title": "Created At", "type": "integer"}, "updated_at": {"title": "Updated At", "type": "integer"}, "cover": {"title": "Cover", "type": "string"}, "active": {"title": "Active", "type": "boolean"}, "unlocked": {"title": "Unlocked", "type": "boolean"}, "primary": {"title": "Primary", "type": "boolean"}, "primary_id": {"title": "Primary Id", "type": "string"}, "last_version": {"title": "Last Version", "type": "string"}, "versions": {"title": "Versions", "type": "array", "items": {"type": "string"}}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}}, "required": ["id", "name", "user_address", "created_at", "updated_at"], "definitions": {"Author": {"title": "Author", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "link": {"title": "Link", "type": "string"}}, "required": ["name", "link"]}, "InfoCartridge": {"title": "InfoCartridge", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "summary": {"title": "Summary", "type": "string"}, "description": {"title": "Description", "type": "string"}, "version": {"title": "Version", "type": "string"}, "status": {"title": "Status", "type": "string"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "authors": {"title": "Authors", "type": "array", "items": {"$ref": "#/definitions/Author"}}, "links": {"title": "Links", "type": "array", "items": {"type": "string"}}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}}}}}',
-      ),
-    ),
+        '{"title": "CartridgeInfo", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}, "name": {"title": "Name", "type": "string"}, "user_address": {"title": "User Address", "type": "string"}, "input_index": {"title": "Input Index", "type": "integer"}, "authors": {"title": "Authors", "type": "array", "items": {"type": "string"}}, "info": {"$ref": "#/definitions/InfoCartridge"}, "original_info": {"$ref": "#/definitions/InfoCartridge"}, "created_at": {"title": "Created At", "type": "integer"}, "updated_at": {"title": "Updated At", "type": "integer"}, "cover": {"title": "Cover", "type": "string"}, "active": {"title": "Active", "type": "boolean"}, "unlocked": {"title": "Unlocked", "type": "boolean"}, "primary": {"title": "Primary", "type": "boolean"}, "primary_id": {"title": "Primary Id", "type": "string"}, "last_version": {"title": "Last Version", "type": "string"}, "versions": {"title": "Versions", "type": "array", "items": {"type": "string"}}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}}, "required": ["id", "name", "user_address", "created_at", "updated_at"], "definitions": {"Author": {"title": "Author", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "link": {"title": "Link", "type": "string"}}, "required": ["name", "link"]}, "InfoCartridge": {"title": "InfoCartridge", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "summary": {"title": "Summary", "type": "string"}, "description": {"title": "Description", "type": "string"}, "version": {"title": "Version", "type": "string"}, "status": {"title": "Status", "type": "string"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "authors": {"title": "Authors", "type": "array", "items": {"$ref": "#/definitions/Author"}}, "links": {"title": "Links", "type": "array", "items": {"type": "string"}}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}}}}}'
+      )
+    )
   },
-  CartridgesOutput: {
-    ioType: "report",
-    abiTypes: [],
-    params: ["data", "total", "page"],
+  'CartridgesOutput': {
+    ioType:"report",
+    abiTypes:[],
+    params:['data', 'total', 'page'],
     decoder: decodeToCartridgesOutput,
     validator: ajv.compile<ifaces.CartridgesOutput>(
       JSON.parse(
-        '{"title": "CartridgesOutput", "type": "object", "properties": {"data": {"title": "Data", "type": "array", "items": {"$ref": "#/definitions/CartridgeInfo"}}, "total": {"title": "Total", "type": "integer"}, "page": {"title": "Page", "type": "integer"}}, "required": ["data", "total", "page"], "definitions": {"Author": {"title": "Author", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "link": {"title": "Link", "type": "string"}}, "required": ["name", "link"]}, "InfoCartridge": {"title": "InfoCartridge", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "summary": {"title": "Summary", "type": "string"}, "description": {"title": "Description", "type": "string"}, "version": {"title": "Version", "type": "string"}, "status": {"title": "Status", "type": "string"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "authors": {"title": "Authors", "type": "array", "items": {"$ref": "#/definitions/Author"}}, "links": {"title": "Links", "type": "array", "items": {"type": "string"}}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}}}, "CartridgeInfo": {"title": "CartridgeInfo", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}, "name": {"title": "Name", "type": "string"}, "user_address": {"title": "User Address", "type": "string"}, "input_index": {"title": "Input Index", "type": "integer"}, "authors": {"title": "Authors", "type": "array", "items": {"type": "string"}}, "info": {"$ref": "#/definitions/InfoCartridge"}, "original_info": {"$ref": "#/definitions/InfoCartridge"}, "created_at": {"title": "Created At", "type": "integer"}, "updated_at": {"title": "Updated At", "type": "integer"}, "cover": {"title": "Cover", "type": "string"}, "active": {"title": "Active", "type": "boolean"}, "unlocked": {"title": "Unlocked", "type": "boolean"}, "primary": {"title": "Primary", "type": "boolean"}, "primary_id": {"title": "Primary Id", "type": "string"}, "last_version": {"title": "Last Version", "type": "string"}, "versions": {"title": "Versions", "type": "array", "items": {"type": "string"}}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}}, "required": ["id", "name", "user_address", "created_at", "updated_at"]}}}',
-      ),
-    ),
+        '{"title": "CartridgesOutput", "type": "object", "properties": {"data": {"title": "Data", "type": "array", "items": {"$ref": "#/definitions/CartridgeInfo"}}, "total": {"title": "Total", "type": "integer"}, "page": {"title": "Page", "type": "integer"}}, "required": ["data", "total", "page"], "definitions": {"Author": {"title": "Author", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "link": {"title": "Link", "type": "string"}}, "required": ["name", "link"]}, "InfoCartridge": {"title": "InfoCartridge", "type": "object", "properties": {"name": {"title": "Name", "type": "string"}, "summary": {"title": "Summary", "type": "string"}, "description": {"title": "Description", "type": "string"}, "version": {"title": "Version", "type": "string"}, "status": {"title": "Status", "type": "string"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "authors": {"title": "Authors", "type": "array", "items": {"$ref": "#/definitions/Author"}}, "links": {"title": "Links", "type": "array", "items": {"type": "string"}}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}}}, "CartridgeInfo": {"title": "CartridgeInfo", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}, "name": {"title": "Name", "type": "string"}, "user_address": {"title": "User Address", "type": "string"}, "input_index": {"title": "Input Index", "type": "integer"}, "authors": {"title": "Authors", "type": "array", "items": {"type": "string"}}, "info": {"$ref": "#/definitions/InfoCartridge"}, "original_info": {"$ref": "#/definitions/InfoCartridge"}, "created_at": {"title": "Created At", "type": "integer"}, "updated_at": {"title": "Updated At", "type": "integer"}, "cover": {"title": "Cover", "type": "string"}, "active": {"title": "Active", "type": "boolean"}, "unlocked": {"title": "Unlocked", "type": "boolean"}, "primary": {"title": "Primary", "type": "boolean"}, "primary_id": {"title": "Primary Id", "type": "string"}, "last_version": {"title": "Last Version", "type": "string"}, "versions": {"title": "Versions", "type": "array", "items": {"type": "string"}}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}}, "required": ["id", "name", "user_address", "created_at", "updated_at"]}}}'
+      )
+    )
   },
-  CartridgeTagsOutput: {
-    ioType: "report",
-    abiTypes: [],
-    params: ["tags"],
+  'CartridgeTagsOutput': {
+    ioType:"report",
+    abiTypes:[],
+    params:['tags'],
     decoder: decodeToCartridgeTagsOutput,
     validator: ajv.compile<ifaces.CartridgeTagsOutput>(
       JSON.parse(
-        '{"title": "CartridgeTagsOutput", "type": "object", "properties": {"tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}}, "required": ["tags"]}',
-      ),
-    ),
+        '{"title": "CartridgeTagsOutput", "type": "object", "properties": {"tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}}, "required": ["tags"]}'
+      )
+    )
   },
-  CartridgeAuthorsOutput: {
-    ioType: "report",
-    abiTypes: [],
-    params: ["authors"],
+  'CartridgeAuthorsOutput': {
+    ioType:"report",
+    abiTypes:[],
+    params:['authors'],
     decoder: decodeToCartridgeAuthorsOutput,
     validator: ajv.compile<ifaces.CartridgeAuthorsOutput>(
       JSON.parse(
-        '{"title": "CartridgeAuthorsOutput", "type": "object", "properties": {"authors": {"title": "Authors", "type": "array", "items": {"type": "string"}}}, "required": ["authors"]}',
-      ),
-    ),
+        '{"title": "CartridgeAuthorsOutput", "type": "object", "properties": {"authors": {"title": "Authors", "type": "array", "items": {"type": "string"}}}, "required": ["authors"]}'
+      )
+    )
   },
-  RulesOutput: {
-    ioType: "report",
-    abiTypes: [],
-    params: ["data", "total", "page"],
+  'RulesOutput': {
+    ioType:"report",
+    abiTypes:[],
+    params:['data', 'total', 'page'],
     decoder: decodeToRulesOutput,
     validator: ajv.compile<ifaces.RulesOutput>(
       JSON.parse(
-        '{"title": "RulesOutput", "type": "object", "properties": {"data": {"title": "Data", "type": "array", "items": {"$ref": "#/definitions/RuleInfo"}}, "total": {"title": "Total", "type": "integer"}, "page": {"title": "Page", "type": "integer"}}, "required": ["data", "total", "page"], "definitions": {"RuleInfo": {"title": "RuleInfo", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}, "name": {"title": "Name", "type": "string"}, "description": {"title": "Description", "type": "string"}, "cartridge_id": {"title": "Cartridge Id", "type": "string"}, "created_by": {"title": "Created By", "type": "string"}, "created_at": {"title": "Created At", "type": "integer"}, "input_index": {"title": "Input Index", "type": "integer"}, "args": {"title": "Args", "type": "string"}, "in_card": {"title": "In Card", "type": "string", "format": "binary"}, "score_function": {"title": "Score Function", "type": "string"}, "start": {"title": "Start", "type": "integer"}, "end": {"title": "End", "type": "integer"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "allow_tapes": {"title": "Allow Tapes", "type": "boolean"}, "allow_in_card": {"title": "Allow In Card", "type": "boolean"}, "save_tapes": {"title": "Save Tapes", "type": "boolean"}, "save_out_cards": {"title": "Save Out Cards", "type": "boolean"}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}, "deactivated": {"title": "Deactivated", "type": "boolean"}}, "required": ["id", "name", "description", "cartridge_id", "created_by", "created_at", "args", "in_card", "score_function", "tags"]}}}',
-      ),
-    ),
+        '{"title": "RulesOutput", "type": "object", "properties": {"data": {"title": "Data", "type": "array", "items": {"$ref": "#/definitions/RuleInfo"}}, "total": {"title": "Total", "type": "integer"}, "page": {"title": "Page", "type": "integer"}}, "required": ["data", "total", "page"], "definitions": {"RuleInfo": {"title": "RuleInfo", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}, "name": {"title": "Name", "type": "string"}, "description": {"title": "Description", "type": "string"}, "cartridge_id": {"title": "Cartridge Id", "type": "string"}, "created_by": {"title": "Created By", "type": "string"}, "created_at": {"title": "Created At", "type": "integer"}, "input_index": {"title": "Input Index", "type": "integer"}, "args": {"title": "Args", "type": "string"}, "in_card": {"title": "In Card", "type": "string", "format": "binary"}, "score_function": {"title": "Score Function", "type": "string"}, "start": {"title": "Start", "type": "integer"}, "end": {"title": "End", "type": "integer"}, "tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "allow_tapes": {"title": "Allow Tapes", "type": "boolean"}, "allow_in_card": {"title": "Allow In Card", "type": "boolean"}, "save_tapes": {"title": "Save Tapes", "type": "boolean"}, "save_out_cards": {"title": "Save Out Cards", "type": "boolean"}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}, "deactivated": {"title": "Deactivated", "type": "boolean"}}, "required": ["id", "name", "description", "cartridge_id", "created_by", "created_at", "args", "in_card", "score_function", "tags"]}}}'
+      )
+    )
   },
-  RuleTagsOutput: {
-    ioType: "report",
-    abiTypes: [],
-    params: ["tags"],
+  'RuleTagsOutput': {
+    ioType:"report",
+    abiTypes:[],
+    params:['tags'],
     decoder: decodeToRuleTagsOutput,
     validator: ajv.compile<ifaces.RuleTagsOutput>(
       JSON.parse(
-        '{"title": "RuleTagsOutput", "type": "object", "properties": {"tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}}, "required": ["tags"]}',
-      ),
-    ),
+        '{"title": "RuleTagsOutput", "type": "object", "properties": {"tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}}, "required": ["tags"]}'
+      )
+    )
   },
-  TapesOutput: {
-    ioType: "report",
-    abiTypes: [],
-    params: ["data", "total", "page"],
+  'TapesOutput': {
+    ioType:"report",
+    abiTypes:[],
+    params:['data', 'total', 'page'],
     decoder: decodeToTapesOutput,
     validator: ajv.compile<ifaces.TapesOutput>(
       JSON.parse(
-        '{"title": "TapesOutput", "type": "object", "properties": {"data": {"title": "Data", "type": "array", "items": {"$ref": "#/definitions/TapeInfo"}}, "total": {"title": "Total", "type": "integer"}, "page": {"title": "Page", "type": "integer"}}, "required": ["data", "total", "page"], "definitions": {"TapeInfo": {"title": "TapeInfo", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}, "cartridge_id": {"title": "Cartridge Id", "type": "string"}, "rule_id": {"title": "Rule Id", "type": "string"}, "user_address": {"title": "User Address", "type": "string"}, "timestamp": {"title": "Timestamp", "type": "integer"}, "input_index": {"title": "Input Index", "type": "integer"}, "score": {"title": "Score", "type": "integer"}, "rank": {"title": "Rank", "type": "integer"}, "verified": {"title": "Verified", "type": "boolean"}, "in_card": {"title": "In Card", "type": "string", "format": "binary"}, "data": {"title": "Data", "type": "string", "format": "binary"}, "out_card": {"title": "Out Card", "type": "string", "format": "binary"}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}}, "required": ["id", "cartridge_id", "rule_id", "user_address", "timestamp"]}}}',
-      ),
-    ),
+        '{"title": "TapesOutput", "type": "object", "properties": {"data": {"title": "Data", "type": "array", "items": {"$ref": "#/definitions/TapeInfo"}}, "total": {"title": "Total", "type": "integer"}, "page": {"title": "Page", "type": "integer"}}, "required": ["data", "total", "page"], "definitions": {"TapeInfo": {"title": "TapeInfo", "type": "object", "properties": {"id": {"title": "Id", "type": "string"}, "cartridge_id": {"title": "Cartridge Id", "type": "string"}, "rule_id": {"title": "Rule Id", "type": "string"}, "user_address": {"title": "User Address", "type": "string"}, "timestamp": {"title": "Timestamp", "type": "integer"}, "input_index": {"title": "Input Index", "type": "integer"}, "score": {"title": "Score", "type": "integer"}, "rank": {"title": "Rank", "type": "integer"}, "verified": {"title": "Verified", "type": "boolean"}, "in_card": {"title": "In Card", "type": "string", "format": "binary"}, "data": {"title": "Data", "type": "string", "format": "binary"}, "out_card": {"title": "Out Card", "type": "string", "format": "binary"}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string"}}}, "required": ["id", "cartridge_id", "rule_id", "user_address", "timestamp"]}}}'
+      )
+    )
   },
-  CartridgeEvent: {
-    ioType: "noticeHeader",
-    abiTypes: ["bytes32", "bytes32", "int", "address", "uint"],
-    params: [
-      "version",
-      "cartridge_id",
-      "cartridge_input_index",
-      "cartridge_user_address",
-      "timestamp",
-    ],
+  'CartridgeEvent': {
+    ioType:"noticeHeader",
+    abiTypes:['bytes32', 'bytes32', 'int', 'address', 'uint'],
+    params:['version', 'cartridge_id', 'cartridge_input_index', 'cartridge_user_address', 'timestamp'],
     decoder: decodeToCartridgeEvent,
     validator: ajv.compile<ifaces.CartridgeEvent>(
       JSON.parse(
         '{"title": "CartridgeEvent", "type": "object", "properties": {"version": {"title": "Version", "type": "string", "format": "binary"}, "cartridge_id": {"title": "Cartridge Id", "type": "string", "format": "binary"}, "cartridge_input_index": {"title": "Cartridge Input Index", "type": "integer"}, "cartridge_user_address": {"title": "Cartridge User Address", "type": "string"}, "timestamp": {"title": "Timestamp", "type": "integer"}}, "required": ["version", "cartridge_id", "cartridge_input_index", "cartridge_user_address", "timestamp"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  CartridgeRemoved: {
-    ioType: "noticeHeader",
-    abiTypes: ["bytes32", "uint"],
-    params: ["cartridge_id", "timestamp"],
+  'CartridgeRemoved': {
+    ioType:"noticeHeader",
+    abiTypes:['bytes32', 'uint'],
+    params:['cartridge_id', 'timestamp'],
     decoder: decodeToCartridgeRemoved,
     validator: ajv.compile<ifaces.CartridgeRemoved>(
       JSON.parse(
         '{"title": "CartridgeRemoved", "type": "object", "properties": {"cartridge_id": {"title": "Cartridge Id", "type": "string", "format": "binary"}, "timestamp": {"title": "Timestamp", "type": "integer"}}, "required": ["cartridge_id", "timestamp"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  RuleCreated: {
-    ioType: "noticeHeader",
-    abiTypes: ["bytes32", "string", "uint"],
-    params: ["rule_id", "created_by", "created_at"],
+  'RuleCreated': {
+    ioType:"noticeHeader",
+    abiTypes:['bytes32', 'string', 'uint'],
+    params:['rule_id', 'created_by', 'created_at'],
     decoder: decodeToRuleCreated,
     validator: ajv.compile<ifaces.RuleCreated>(
       JSON.parse(
         '{"title": "RuleCreated", "type": "object", "properties": {"rule_id": {"title": "Rule Id", "type": "string", "format": "binary"}, "created_by": {"title": "Created By", "type": "string"}, "created_at": {"title": "Created At", "type": "integer"}}, "required": ["rule_id", "created_by", "created_at"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  VerificationOutput: {
-    ioType: "noticeHeader",
-    abiTypes: [
-      "bytes32",
-      "bytes32",
-      "int",
-      "address",
-      "address",
-      "uint",
-      "int",
-      "bytes32",
-      "int",
-      "bytes32",
-      "int",
-      "uint",
-      "bytes32[]",
-    ],
-    params: [
-      "version",
-      "cartridge_id",
-      "cartridge_input_index",
-      "cartridge_user_address",
-      "user_address",
-      "timestamp",
-      "score",
-      "rule_id",
-      "rule_input_index",
-      "tape_id",
-      "tape_input_index",
-      "error_code",
-      "tapes",
-    ],
+  'VerificationOutput': {
+    ioType:"noticeHeader",
+    abiTypes:['bytes32', 'bytes32', 'int', 'address', 'address', 'uint', 'int', 'bytes32', 'int', 'bytes32', 'int', 'uint', 'bytes32[]'],
+    params:['version', 'cartridge_id', 'cartridge_input_index', 'cartridge_user_address', 'user_address', 'timestamp', 'score', 'rule_id', 'rule_input_index', 'tape_id', 'tape_input_index', 'error_code', 'tapes'],
     decoder: decodeToVerificationOutput,
     validator: ajv.compile<ifaces.VerificationOutput>(
       JSON.parse(
         '{"title": "VerificationOutput", "type": "object", "properties": {"version": {"title": "Version", "type": "string", "format": "binary"}, "cartridge_id": {"title": "Cartridge Id", "type": "string", "format": "binary"}, "cartridge_input_index": {"title": "Cartridge Input Index", "type": "integer"}, "cartridge_user_address": {"title": "Cartridge User Address", "type": "string"}, "user_address": {"title": "User Address", "type": "string"}, "timestamp": {"title": "Timestamp", "type": "integer"}, "score": {"title": "Score", "type": "integer"}, "rule_id": {"title": "Rule Id", "type": "string", "format": "binary"}, "rule_input_index": {"title": "Rule Input Index", "type": "integer"}, "tape_id": {"title": "Tape Id", "type": "string", "format": "binary"}, "tape_input_index": {"title": "Tape Input Index", "type": "integer"}, "error_code": {"title": "Error Code", "type": "integer"}, "tapes": {"title": "Tapes", "type": "array", "items": {"type": "string", "format": "binary"}}}, "required": ["version", "cartridge_id", "cartridge_input_index", "cartridge_user_address", "user_address", "timestamp", "score", "rule_id", "rule_input_index", "tape_id", "tape_input_index", "error_code", "tapes"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-  TapeAward: {
-    ioType: "noticeHeader",
-    abiTypes: [
-      "bytes32",
-      "bytes32",
-      "int",
-      "address",
-      "address",
-      "uint",
-      "int",
-      "bytes32",
-      "int",
-      "bytes32",
-      "int",
-      "uint",
-    ],
-    params: [
-      "version",
-      "cartridge_id",
-      "cartridge_input_index",
-      "cartridge_user_address",
-      "user_address",
-      "timestamp",
-      "score",
-      "rule_id",
-      "rule_input_index",
-      "tape_id",
-      "tape_input_index",
-      "rank",
-    ],
+  'TapeAward': {
+    ioType:"noticeHeader",
+    abiTypes:['bytes32', 'bytes32', 'int', 'address', 'address', 'uint', 'int', 'bytes32', 'int', 'bytes32', 'int', 'uint'],
+    params:['version', 'cartridge_id', 'cartridge_input_index', 'cartridge_user_address', 'user_address', 'timestamp', 'score', 'rule_id', 'rule_input_index', 'tape_id', 'tape_input_index', 'rank'],
     decoder: decodeToTapeAward,
     validator: ajv.compile<ifaces.TapeAward>(
       JSON.parse(
         '{"title": "TapeAward", "type": "object", "properties": {"version": {"title": "Version", "type": "string", "format": "binary"}, "cartridge_id": {"title": "Cartridge Id", "type": "string", "format": "binary"}, "cartridge_input_index": {"title": "Cartridge Input Index", "type": "integer"}, "cartridge_user_address": {"title": "Cartridge User Address", "type": "string"}, "user_address": {"title": "User Address", "type": "string"}, "timestamp": {"title": "Timestamp", "type": "integer"}, "score": {"title": "Score", "type": "integer"}, "rule_id": {"title": "Rule Id", "type": "string", "format": "binary"}, "rule_input_index": {"title": "Rule Input Index", "type": "integer"}, "tape_id": {"title": "Tape Id", "type": "string", "format": "binary"}, "tape_input_index": {"title": "Tape Input Index", "type": "integer"}, "rank": {"title": "Rank", "type": "integer"}}, "required": ["version", "cartridge_id", "cartridge_input_index", "cartridge_user_address", "user_address", "timestamp", "score", "rule_id", "rule_input_index", "tape_id", "tape_input_index", "rank"]}'.replace(
           /integer/g,
-          'string","format":"biginteger',
-        ),
-      ),
-    ),
+          'string","format":"biginteger'
+        )
+      )
+    )
   },
-};
+  };

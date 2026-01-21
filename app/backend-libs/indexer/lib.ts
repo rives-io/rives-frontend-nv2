@@ -70,7 +70,7 @@ export async function indexerQuery(
       options
     );
   if (options?.decode) {
-    return decodeToModel(output,options.decodeModel || "json");
+    return decodeToModel(output,options.decodeModel);
   }
   return output;
 }
@@ -86,7 +86,7 @@ export function decodeToModel(
   data: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
   modelName: string
 ): any {
-  if (modelName == undefined) throw new Error("undefined model");
+  if (modelName == undefined) modelName = "json";
   if (CONVENTIONAL_TYPES.includes(modelName)) {
     if ((data as CartesiOutput).decodedData)
       return decodeToConventionalTypes((data as CartesiOutput).decodedData.payload, modelName);

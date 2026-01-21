@@ -11,6 +11,7 @@ import {
 } from "@cartesi/viem";
 import { inspect, type InspectOptions, type InspectReport } from "./inspect";
 
+
 import {
   type AdvanceResult,
   ensureCartesiPublicClient,
@@ -69,8 +70,7 @@ export async function decodeAdvance(
     let out: CartesiInput | CartesiOutput | CartesiReport | InspectReport;
     if (outType == "output") {
       out = outMap[outType as outType][
-        `${indOut.output_index}`
-      ] as CartesiOutput;
+        `${indOut.output_index}`] as CartesiOutput;
     } else {
       out = outMap[outType as outType][`${indOut.output_index}`];
     }
@@ -101,11 +101,11 @@ export async function genericGetOutputs(
   });
   for (const outInd of indexerOutput.data) {
     const ind =
-      outInd.type == "input" ? outInd.input_index : outInd.output_index;
+        outInd.type == "input" ? outInd.input_index : outInd.output_index;
     dataQueries.push(
-      outputGetters[outInd.type](rpcOptions, ind).then(
+        outputGetters[outInd.type](rpcOptions, ind).then(
         (
-          output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
+          output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
         ) => {
           return decoder(output, outInd.class_name);
         },
@@ -116,3 +116,4 @@ export async function genericGetOutputs(
     return { page: indexerOutput.page, total: indexerOutput.total, data: data };
   });
 }
+
