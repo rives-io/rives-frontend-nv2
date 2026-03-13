@@ -1,11 +1,7 @@
 import CartridgeCard from "@/app/components/CartridgeCard";
 import TapeCard from "@/app/components/TapeCard";
 import { CartridgeInfo, RuleInfo } from "@/app/backend-libs/core/ifaces";
-import {
-  cartridgeInfo,
-  rules,
-  VerificationOutput,
-} from "@/app/backend-libs/core/lib";
+import { cartridgeInfo, rules } from "@/app/backend-libs/core/lib";
 import { VerifyPayload } from "@/app/backend-libs/core/lib";
 import { cartridges as cartridgesRequest } from "@/app/backend-libs/core/lib";
 import { envClient } from "@/app/utils/clientEnv";
