@@ -1,9 +1,10 @@
 {
-  "name": "rives-frontend",
-  "version": "2.0.0-alpha.1",
+  "name": "rives-nv2-frontend",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "build-debug": "next build --debug-prerender",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
