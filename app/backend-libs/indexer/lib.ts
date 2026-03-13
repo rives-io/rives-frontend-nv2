@@ -34,7 +34,6 @@ import { type InspectOptions, type InspectReport } from "../cartesapp/inspect";
 
 import * as ifaces from "./ifaces.d";
 
-
 /**
  * Configs
  */
@@ -52,31 +51,26 @@ const MAX_SPLITTABLE_OUTPUT_SIZE = 4194247;
  * Mutations/Advances
  */
 
-
 /*
  * Queries/Inspects
  */
 
 export async function indexerQuery(
-    inputData: ifaces.IndexerPayload,
-    options?:QueryOptions
-):Promise<InspectReport|any> {
-  const selectorInfo = 'indexer_indexerQuery';
+  inputData: ifaces.IndexerPayload,
+  options?: QueryOptions,
+): Promise<InspectReport | any> {
+  const selectorInfo = "indexer_indexerQuery";
   const data: IndexerPayload = new IndexerPayload(inputData);
-  const output: InspectReport =
-    await genericInspect<ifaces.IndexerPayload>(
-      data,
-      selectorInfo,
-      options
-    );
+  const output: InspectReport = await genericInspect<ifaces.IndexerPayload>(
+    data,
+    selectorInfo,
+    options,
+  );
   if (options?.decode) {
-    return decodeToModel(output,options.decodeModel);
+    return decodeToModel(output, options.decodeModel);
   }
   return output;
 }
-
-
-
 
 /**
  * Models Decoders/Exporters
@@ -84,12 +78,15 @@ export async function indexerQuery(
 
 export function decodeToModel(
   data: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
-  modelName: string
+  modelName: string | undefined,
 ): any {
   if (modelName == undefined) modelName = "json";
   if (CONVENTIONAL_TYPES.includes(modelName)) {
     if ((data as CartesiOutput).decodedData)
-      return decodeToConventionalTypes((data as CartesiOutput).decodedData.payload, modelName);
+      return decodeToConventionalTypes(
+        (data as CartesiOutput).decodedData.payload,
+        modelName,
+      );
     return decodeToConventionalTypes(data.rawData, modelName);
   }
   const decoder = models[modelName].decoder;
@@ -118,12 +115,10 @@ export function exportToModel(data: any, modelName: string): string {
 
 export class IndexerPayload extends IOData<ifaces.IndexerPayload> {
   constructor(data: ifaces.IndexerPayload, validate: boolean = true) {
-    super(models['IndexerPayload'],data,validate);
+    super(models["IndexerPayload"], data, validate);
   }
 }
-export function exportToIndexerPayload(
-  data: ifaces.IndexerPayload
-): string {
+export function exportToIndexerPayload(data: ifaces.IndexerPayload): string {
   const dataToExport: IndexerPayload = new IndexerPayload(data);
   return dataToExport.export();
 }
@@ -131,42 +126,59 @@ export function exportToIndexerPayload(
 
 export class IndexerOutput extends Output<ifaces.IndexerOutput> {
   constructor(output: CartesiReport | InspectReport) {
-    super(models['IndexerOutput'],output);
+    super(models["IndexerOutput"], output);
   }
 }
 export function decodeToIndexerOutput(
-  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport
+  output: CartesiInput | CartesiOutput | CartesiReport | InspectReport,
 ): IndexerOutput {
   return new IndexerOutput(output as CartesiReport);
 }
-
 
 /**
  * Model
  */
 
 export const models: Models = {
-  'IndexerPayload': {
-    ioType:"queryJsonPayload",
-    abiTypes:[],
-    params:['tags', 'tags_or', 'type', 'msg_sender', 'block_timestamp_gte', 'block_timestamp_lte', 'value_gte', 'value_lte', 'eth_value_gte', 'eth_value_lte', 'module', 'input_index', 'app_contract', 'order_by', 'order_dir', 'page', 'page_size'],
+  IndexerPayload: {
+    ioType: "queryJsonPayload",
+    abiTypes: [],
+    params: [
+      "tags",
+      "tags_or",
+      "type",
+      "msg_sender",
+      "block_timestamp_gte",
+      "block_timestamp_lte",
+      "value_gte",
+      "value_lte",
+      "eth_value_gte",
+      "eth_value_lte",
+      "module",
+      "input_index",
+      "app_contract",
+      "order_by",
+      "order_dir",
+      "page",
+      "page_size",
+    ],
     // decoder: decodeToIndexerPayloadInput,
     exporter: exportToIndexerPayload,
     validator: ajv.compile<ifaces.IndexerPayload>(
       JSON.parse(
-        '{"title": "IndexerPayload", "type": "object", "properties": {"tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "tags_or": {"title": "Tags Or", "type": "boolean"}, "type": {"title": "Type", "type": "string"}, "msg_sender": {"title": "Msg Sender", "type": "string"}, "block_timestamp_gte": {"title": "Block Timestamp Gte", "type": "integer"}, "block_timestamp_lte": {"title": "Block Timestamp Lte", "type": "integer"}, "value_gte": {"title": "Value Gte", "type": "integer"}, "value_lte": {"title": "Value Lte", "type": "integer"}, "eth_value_gte": {"title": "Eth Value Gte", "type": "string"}, "eth_value_lte": {"title": "Eth Value Lte", "type": "string"}, "module": {"title": "Module", "type": "string"}, "input_index": {"title": "Input Index", "type": "integer"}, "app_contract": {"title": "App Contract", "type": "string"}, "order_by": {"title": "Order By", "type": "string"}, "order_dir": {"title": "Order Dir", "type": "string"}, "page": {"title": "Page", "type": "integer"}, "page_size": {"title": "Page Size", "type": "integer"}}}'
-      )
-    )
+        '{"title": "IndexerPayload", "type": "object", "properties": {"tags": {"title": "Tags", "type": "array", "items": {"type": "string"}}, "tags_or": {"title": "Tags Or", "type": "boolean"}, "type": {"title": "Type", "type": "string"}, "msg_sender": {"title": "Msg Sender", "type": "string"}, "block_timestamp_gte": {"title": "Block Timestamp Gte", "type": "integer"}, "block_timestamp_lte": {"title": "Block Timestamp Lte", "type": "integer"}, "value_gte": {"title": "Value Gte", "type": "integer"}, "value_lte": {"title": "Value Lte", "type": "integer"}, "eth_value_gte": {"title": "Eth Value Gte", "type": "string"}, "eth_value_lte": {"title": "Eth Value Lte", "type": "string"}, "module": {"title": "Module", "type": "string"}, "input_index": {"title": "Input Index", "type": "integer"}, "app_contract": {"title": "App Contract", "type": "string"}, "order_by": {"title": "Order By", "type": "string"}, "order_dir": {"title": "Order Dir", "type": "string"}, "page": {"title": "Page", "type": "integer"}, "page_size": {"title": "Page Size", "type": "integer"}}}',
+      ),
+    ),
   },
-  'IndexerOutput': {
-    ioType:"report",
-    abiTypes:[],
-    params:['data', 'total', 'page'],
+  IndexerOutput: {
+    ioType: "report",
+    abiTypes: [],
+    params: ["data", "total", "page"],
     decoder: decodeToIndexerOutput,
     validator: ajv.compile<ifaces.IndexerOutput>(
       JSON.parse(
-        '{"title": "IndexerOutput", "type": "object", "properties": {"data": {"title": "Data", "type": "array", "items": {"$ref": "#/definitions/OutputIndex"}}, "total": {"title": "Total", "type": "integer"}, "page": {"title": "Page", "type": "integer"}}, "required": ["data", "total", "page"], "definitions": {"OutputIndex": {"title": "OutputIndex", "type": "object", "properties": {"type": {"title": "Type", "type": "string"}, "module": {"title": "Module", "type": "string"}, "class_name": {"title": "Class Name", "type": "string"}, "input_index": {"title": "Input Index", "type": "integer"}, "output_index": {"title": "Output Index", "type": "integer"}, "app_contract": {"title": "App Contract", "type": "string"}}, "required": ["type", "module", "class_name", "input_index"]}}}'
-      )
-    )
+        '{"title": "IndexerOutput", "type": "object", "properties": {"data": {"title": "Data", "type": "array", "items": {"$ref": "#/definitions/OutputIndex"}}, "total": {"title": "Total", "type": "integer"}, "page": {"title": "Page", "type": "integer"}}, "required": ["data", "total", "page"], "definitions": {"OutputIndex": {"title": "OutputIndex", "type": "object", "properties": {"type": {"title": "Type", "type": "string"}, "module": {"title": "Module", "type": "string"}, "class_name": {"title": "Class Name", "type": "string"}, "input_index": {"title": "Input Index", "type": "integer"}, "output_index": {"title": "Output Index", "type": "integer"}, "app_contract": {"title": "App Contract", "type": "string"}}, "required": ["type", "module", "class_name", "input_index"]}}}',
+      ),
+    ),
   },
-  };
+};
