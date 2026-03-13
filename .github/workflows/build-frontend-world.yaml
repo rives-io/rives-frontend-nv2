@@ -39,7 +39,7 @@ jobs:
           NEXT_PUBLIC_NETWORK_CHAIN_ID: ${{ vars.NEXT_PUBLIC_NETWORK_CHAIN_ID }}
           NEXT_PUBLIC_OPERATOR_ADDR: ${{ vars.NEXT_PUBLIC_OPERATOR_ADDR }}
           NEXT_PUBLIC_CARTRIDGES_URL: ${{ vars.NEXT_PUBLIC_CARTRIDGES_URL }}
-          PRIVY_APP_ID: ${{ vars.PRIVY_APP_ID }}
+          PRIVY_APP_ID: ${{ secrets.PRIVY_APP_ID }}
           PRIVY_APP_SECRET: ${{ secrets.PRIVY_APP_SECRET }}
         run: |
           rm .env
