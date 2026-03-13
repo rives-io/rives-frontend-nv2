@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import Script from "next/script";
 import { useState, useImperativeHandle, forwardRef } from "react";
