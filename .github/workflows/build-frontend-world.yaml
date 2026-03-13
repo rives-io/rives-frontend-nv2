@@ -1,4 +1,4 @@
-name: build-frontend-mainnet-v5
+name: build-frontend-world
 run-name: Building Frontend Image for World Deploy
 on:
   workflow_dispatch:
