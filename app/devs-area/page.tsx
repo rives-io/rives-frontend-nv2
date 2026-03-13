@@ -1,4 +1,3 @@
-"use client";
 import RivemuEditor from "../components/RivemuEditor";
 
 export default function DevelopmentArea() {

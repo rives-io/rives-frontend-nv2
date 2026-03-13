@@ -8,6 +8,7 @@ import {
   polygonMumbai,
   Chain,
   baseSepolia,
+  worldchain,
 } from "viem/chains";
 import {
   Hex,
@@ -347,6 +348,7 @@ chains[polygon.id] = polygon;
 chains[polygonMumbai.id] = polygon;
 chains[anvil.id] = anvil;
 chains[baseSepolia.id] = customBaseSepolia;
+chains[worldchain.id] = worldchain;
 
 export function getChain(chainId: number): Chain;
 export function getChain(chainId: string): Chain;

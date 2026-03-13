@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import { Metadata } from "next";
 import CartridgesList from "../components/CartridgesList";
 //import Link from "next/link";

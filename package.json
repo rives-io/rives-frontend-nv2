@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build-debug": "next build --debug-prerender",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

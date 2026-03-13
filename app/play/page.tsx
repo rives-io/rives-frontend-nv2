@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 export default function Play() {
   return (
     <main className="flex items-center justify-center h-lvh">

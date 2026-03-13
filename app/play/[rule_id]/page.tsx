@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import Image from "next/image";
 import Link from "next/link";
 import ReportIcon from "@mui/icons-material/Report";

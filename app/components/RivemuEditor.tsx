@@ -1,5 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
 
 import { Parser } from "expr-eval";
 import React, { useState, useEffect, useRef } from "react";
